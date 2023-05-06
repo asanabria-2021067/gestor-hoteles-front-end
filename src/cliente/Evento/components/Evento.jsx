@@ -1,33 +1,34 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { apiServicios } from "../api/apiServicios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { apiEventos } from "../api/apiEventos";
 
-export const Servicio = () => {
-  const [listaServicios, setListaServicios] = useState([]);
-  console.log(listaServicios);
+export const Evento = () => {
+  const [listaEventos, setListaEventos] = useState([]);
+  console.log(listaEventos)
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const viewServicios = async () => {
-    const getlistaServiciosFromApi = await apiServicios();
-    setListaServicios(getlistaServiciosFromApi);
+
+  const viewEventos = async () => {
+    const getEventosFromApi = await apiEventos();
+    setListaEventos(getEventosFromApi);
   };
 
   useEffect(() => {
-    viewServicios();
+    viewEventos();
   }, [showModal]);
 
   return (
     <>
       <div className="container">
-        <h1 className="h1">Lista de servicios:</h1>
-        {listaServicios.map((s) => {
+        <h1 className="h1">Lista de Eventos:</h1>
+        {listaEventos.map((s) => {
           return (
             <div key={s._id} className="card mb-3 mt-4">
               <div className="row g-0">
                 <div className="col-md-4">
                   <a
-                    href="/servicioPorId"
+                    href="/eventoPorId"
                     onClick={(event) => {
                       event.preventDefault();
                     }}
@@ -41,13 +42,12 @@ export const Servicio = () => {
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h5 className="card-title">
-                      Numero de habitacion: {s.nombre}
-                    </h5>
-                    <p>{s.descripcion}</p>
-                    <span type="button" className="btn btn-success">
-                      Precio: Q.{s.precio}
-                    </span>
+                    <p className="card-title">
+                      Nombre Evento: {s.nombre}
+                    </p>
+                    <p>Fecha Inicio: {s.fechaInicio.substring(0,10)}</p>
+                    <p>Fecha Final: {s.fechaFinal.substring(0,10)}</p>
+                    <p>Precio: Q{s.precio} c/u</p>
                     <a className="btn btn-warning ms-1"> Reservar </a>
                   </div>
                 </div>
@@ -55,16 +55,10 @@ export const Servicio = () => {
             </div>
           );
         })}
-        <a
-          className="btnReservar"
-          href="/eventos"
-          onClick={(event) => {
-            event.preventDefault();
-            navigate(`/eventos`);
-          }}
-        >
-          Eventos
-        </a>
+        <a className="btnReservar" href="/reservacion" onClick={(event) => {
+                      event.preventDefault();
+                      navigate(`/reservacion`);
+                    }}>Cuenta</a>
       </div>
       <br />
     </>

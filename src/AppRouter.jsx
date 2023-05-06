@@ -7,6 +7,8 @@ import { Hotel } from "./cliente/Principal/components/Hotel";
 import { Habitaciones } from "./cliente/Habitacion/components/Habitaciones";
 import { HabitacionPorId } from "./cliente/Habitacion/components/HabitacionPorId";
 import { Servicio } from "./cliente/Servicio/components/Servicio";
+import { Evento } from "./cliente/Evento/components/Evento";
+import { Reservacion } from "./cliente/Reservacion/components/Reservacion";
 export const AppRouter = () => {
   return (
     <>
@@ -16,9 +18,10 @@ export const AppRouter = () => {
           element={isUserAuthenticated() ? <App></App> : <Navigate to="/app" />}
         ></Route>
 
+        <Route path="/servicios" element={<Servicio></Servicio>}></Route>
         <Route
-          path="/servicios"
-          element={<Servicio></Servicio>}
+          path="/servicioId/:id"
+          element={<HabitacionPorId></HabitacionPorId>}
         ></Route>
 
         <Route
@@ -30,18 +33,19 @@ export const AppRouter = () => {
 
         <Route path="/login" element={<Login></Login>}></Route>
 
-        <Route
-          path="/hoteles"
-          element={<Hotel></Hotel>}
-        ></Route>
+        <Route path="/hoteles" element={<Hotel></Hotel>}></Route>
         <Route
           path="/habitacion/:id"
           element={<Habitaciones></Habitaciones>}
         ></Route>
-         <Route
+        <Route
           path="/habitacionId/:id"
           element={<HabitacionPorId></HabitacionPorId>}
         ></Route>
+
+        <Route path="/eventos" element={<Evento></Evento>}></Route>
+
+        <Route path="/reservacion" element={<Reservacion></Reservacion>}></Route>
       </Routes>
     </>
   );

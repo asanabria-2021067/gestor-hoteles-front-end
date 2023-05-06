@@ -22,11 +22,7 @@ export const HabitacionPorId = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     const addHabitacion = await agregarHabitacion(id);
-    console.log(addHabitacion);
-    if(addHabitacion){
-      navigate(`/servicios`);
-    }
-    
+    navigate(`/servicios`);
   };
 
   return (

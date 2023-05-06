@@ -22,7 +22,8 @@ export const apiHabitacionesId = async (id) => {
 export const agregarHabitacion = async (id) => {
   try{
     console.log( "AGREGAR")
-    const agregarHabitacionId = await axios.post(`${URLRESERVA}agregarHabitacion/${id}`,  { headers: { "x-token": token } });
+    console.log("TOKEN", token)
+    const agregarHabitacionId = await axios.post(`${URLRESERVA}agregarHabitacion/${id}`, null, { headers: { "x-token": token } });
     console.log( "AGREGAR HIBITACION ID")
   }catch (error) {
     console.log(error)
