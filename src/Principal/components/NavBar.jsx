@@ -50,7 +50,7 @@ export const NavBar = () => {
                   <li className="nav-item">
                     <a className="nav-link active">Ofertas</a>
                   </li>
-                  <li className="buscador">
+                  <li className="buscadorNav">
                     <form className="d-flex" role="search">
                       <input
                         className="form-control me-2"
