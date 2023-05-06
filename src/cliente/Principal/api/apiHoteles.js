@@ -6,11 +6,10 @@ const URL = 'http://localhost:8080/api/hoteles/';
 const URL_BUSCAR = 'http://localhost:8080/api/buscar/hoteles/';
 
 
-
-export const apiHoteles = async(hotel) => {
-    console.log(hotel)
+export const apiHoteles = async() => {
     try {
-        const hoteles = await axios.get(`${URL_BUSCAR}${hotel}`);
+        console.log('Entrada');
+        const hoteles = await axios.get(`${URL}buscar`);
         console.log("AAA", hoteles.data.results)
         return hoteles.data.results;
     } catch (error) {

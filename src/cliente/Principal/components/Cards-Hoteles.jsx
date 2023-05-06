@@ -21,9 +21,7 @@ export const Cards = ({hotel}) => {
               <div className="row g-0">
                 <div className="col-md-4">
                   <img
-                    src="https://images.mirai.com/INFOROOMS/10388447/9eSqxHU6zegpYzEmtKP3/9eSqxHU6zegpYzEmtKP3_large.jpg"
-                    className="img-fluid rounded-start"
-                    alt="..."
+                    src={h.img}
                   />
                 </div>
                 <div className="col-md-8">
@@ -39,11 +37,11 @@ export const Cards = ({hotel}) => {
             </a>   
           );
         })):(
-            <p>Loading...</p>
+            <h2 className="mt-2">Escriba el pais o nombre del hotel que desee</h2>
           )}
           </div>
           <div className="mapa col-md-4 mt-2">
-              <Mapa/>
+              <Mapa hotel={hotel}/>
           </div>
           </div>
      </div>

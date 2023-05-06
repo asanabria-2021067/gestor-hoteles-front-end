@@ -6,6 +6,7 @@ import { Login } from "./login/components/Login";
 import { NavBar } from "./Navbar";
 import { Hotel } from "./cliente/Principal/components/Hotel";
 import { Habitaciones } from "./cliente/Habitacion/components/Habitaciones";
+import { Hoteles } from "./Principal/components/Hoteles";
 export const AppRouter = () => {
   return (
     <>
@@ -26,7 +27,7 @@ export const AppRouter = () => {
 
         <Route
           path="/hoteles"
-          element={<Hotel></Hotel>}
+          element={<Hoteles></Hoteles>}
         ></Route>
         <Route
           path="/habitacion/:id"

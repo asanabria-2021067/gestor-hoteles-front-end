@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
-    const location = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
   return (
     <>
@@ -43,14 +43,21 @@ export const NavBar = () => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" href="#">
+                    <a
+                      className="nav-link active"
+                      href="/hoteles"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/hoteles");
+                      }}
+                    >
                       Hoteles
                     </a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link active">Ofertas</a>
                   </li>
-                  <li className="buscador">
+                  <li className="buscadorNav">
                     <form className="d-flex" role="search">
                       <input
                         className="form-control me-2"

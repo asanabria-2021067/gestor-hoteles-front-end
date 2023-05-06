@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-export const Mapa = () => {
+export const Mapa = ({hotel}) => {
   const mapRef = useRef(null);
 
   useEffect(() => {
