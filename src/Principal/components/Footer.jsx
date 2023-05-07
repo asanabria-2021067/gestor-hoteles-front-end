@@ -21,7 +21,7 @@ export const Footer = () => {
                         <div className="col-lg-4 col-xs-12 location">
                             <h4 className="mt-lg-0 mt-sm-4">Contactanos</h4>
                             <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
-                            <p lassName="mb-0"><i className="fa fa-phone mr-3"></i>(502) 2324-2890</p>
+                            <p className="mb-0"><i className="fa fa-phone mr-3"></i>(502) 2324-2890</p>
                             <p><i className="fa fa-envelope-o mr-3"></i>info@hotelSelecto.com</p>
                         </div>
                     </div>

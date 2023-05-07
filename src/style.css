@@ -285,3 +285,8 @@ body {
 .mapa{
 	height: 90%;
 }
+
+#hotel-card {
+  margin-bottom: 15px;
+}
+

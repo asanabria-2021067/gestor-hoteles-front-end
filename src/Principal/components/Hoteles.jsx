@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { apiHoteles } from '../../cliente/Principal/api/apiHoteles';
+import { apiHoteles, apiHotelesGrupal } from '../../cliente/Principal/api/apiHoteles';
 import { useParams } from 'react-router-dom';
 
 export const Hoteles = () => {
@@ -8,7 +8,7 @@ export const Hoteles = () => {
     const [showModal, setShowModal] = useState(false);
     
     const viewHotelesList = async () => {
-        const getListaHotelesList = await apiHoteles();
+        const getListaHotelesList = await apiHotelesGrupal();
         setListaHoteles(getListaHotelesList);
     };
 
@@ -19,14 +19,16 @@ export const Hoteles = () => {
     return (
         <>
             <div className='container'>
-                <h1>Lista de Hoteles:</h1>
+                <h1>Encuentra el mejor hotel para ti.</h1>
+                <br />
                 {listaHoteles.map((h) => {
                     return (
-                        <div className="card bg-dark text-white" key={h._id}>
-                            <img src="./src/assets/de-viaje.png" className="card-img" alt="..." />
+                        <div id='hotel-card' className="card bg-dark text-white" key={h._id}>
+                            <img id='img-hotel' src={h.img} className="card-img" alt="..." />
                             <div className="card-img-overlay">
                                 <h5 className="card-title">{h.nombre}</h5>
-                                <p className="card-text">Esta es una tarjeta más amplia con texto de apoyo a continuación como introducción natural a contenido adicional. Este contenido es un poco más largo.</p>
+                                <p className="card-text">{h.pais}</p>
+                                <p className="card-text">{h.direccion}</p>
                                 <p className="card-text">Última actualización hace 3 minutos</p>
                             </div>
                         </div>
