@@ -14,14 +14,6 @@ export const Habitaciones = () => {
     setListaHabitaciones(getListaHabitacionesFromApi);
   };
   
-
-  const asignaHabitacion = async () => {
-
-  }
-  const handleSearch = async () => {
-    
-  }
-
   useEffect(() => {
     viewHabitacionesList();
   }, [showModal]);

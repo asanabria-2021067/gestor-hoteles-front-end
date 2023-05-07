@@ -9,6 +9,8 @@ import { HabitacionPorId } from "./cliente/Habitacion/components/HabitacionPorId
 import { Servicio } from "./cliente/Servicio/components/Servicio";
 import { Evento } from "./cliente/Evento/components/Evento";
 import { Reservacion } from "./cliente/Reservacion/components/Reservacion";
+import { ServicioId } from "./cliente/Servicio/components/ServicioPorId";
+import { EventoId } from "./cliente/Evento/components/EventoPorId";
 export const AppRouter = () => {
   return (
     <>
@@ -21,7 +23,7 @@ export const AppRouter = () => {
         <Route path="/servicios" element={<Servicio></Servicio>}></Route>
         <Route
           path="/servicioId/:id"
-          element={<HabitacionPorId></HabitacionPorId>}
+          element={<ServicioId></ServicioId>}
         ></Route>
 
         <Route
@@ -44,6 +46,7 @@ export const AppRouter = () => {
         ></Route>
 
         <Route path="/eventos" element={<Evento></Evento>}></Route>
+        <Route path="/eventoId/:id" element={<EventoId></EventoId>}></Route>
 
         <Route path="/reservacion" element={<Reservacion></Reservacion>}></Route>
       </Routes>

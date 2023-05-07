@@ -27,9 +27,10 @@ export const Servicio = () => {
               <div className="row g-0">
                 <div className="col-md-4">
                   <a
-                    href="/servicioPorId"
+                    href={`/servicioId?id=${s._id}`}
                     onClick={(event) => {
                       event.preventDefault();
+                      navigate(`/servicioId/${s._id}`);
                     }}
                   >
                     <img
@@ -48,7 +49,11 @@ export const Servicio = () => {
                     <span type="button" className="btn btn-success">
                       Precio: Q.{s.precio}
                     </span>
-                    <a className="btn btn-warning ms-1"> Reservar </a>
+                    <a className="btn btn-warning ms-1"  href={`/servicioId?id=${s._id}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigate(`/servicioId/${s._id}`);
+                    }}> Reservar </a>
                   </div>
                 </div>
               </div>
