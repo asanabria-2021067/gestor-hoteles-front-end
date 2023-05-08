@@ -17,3 +17,11 @@ export const apiHoteles = async(hotel) => {
         console.log(error)
     }
 }
+export const apiHotelesGrupal = async() => {
+    try {
+        const listaHoteles = await axios.get(`${URL}buscar`);
+        return listaHoteles.data.listaHoteles;
+    } catch (error) {
+        console.log(error)
+    }
+}

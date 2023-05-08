@@ -47,16 +47,16 @@ export const HabitacionPorId = () => {
         </form>
       </div>
       <div className="container">
-            <div className="card mb-3">
+            <div className="card col-6 mb-3">
               <div className="row g-0">
-                <div className="col-12 col-md-12">
+                <div className="col-md-12">
                     <img
                       src={habitacion.img}
                       className="img-fluid rounded-start"
                       alt="..."
                     />
                 </div>
-                <div className="col-md-12">
+                <div className="col-md-7">
                   <div className="card-body">
                     <h5 className="card-title">
                       Numero de habitacion: {habitacion.numero}

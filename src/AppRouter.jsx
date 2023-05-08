@@ -11,6 +11,7 @@ import { Evento } from "./cliente/Evento/components/Evento";
 import { Reservacion } from "./cliente/Reservacion/components/Reservacion";
 import { ServicioId } from "./cliente/Servicio/components/ServicioPorId";
 import { EventoId } from "./cliente/Evento/components/EventoPorId";
+import { Hoteles } from "./Principal/components/Hoteles";
 export const AppRouter = () => {
   return (
     <>
@@ -36,6 +37,7 @@ export const AppRouter = () => {
         <Route path="/login" element={<Login></Login>}></Route>
 
         <Route path="/hoteles" element={<Hotel></Hotel>}></Route>
+        <Route path="/hotelesVista" element={<Hoteles></Hoteles>}></Route>
         <Route
           path="/habitacion/:id"
           element={<Habitaciones></Habitaciones>}

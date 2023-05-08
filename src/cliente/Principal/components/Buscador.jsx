@@ -23,14 +23,7 @@ export const Buscador = () => {
               onChange={(e) => setHotel(e.target.value)}
             />
           </div>
-          <div className="date-box">
-            <input type="date" placeholder="Entrada" />
-            <input type="date" placeholder="Salida" />
-          </div>
-          <div className="guest-box">
-            <input type="number" placeholder="Habitaciones" />
-            <input type="number" placeholder="Personas" />
-          </div>
+
           <div className="submit-box">
             <button className="btnBuscar" type="submit">Buscar</button>
           </div>

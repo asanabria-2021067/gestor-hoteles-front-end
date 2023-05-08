@@ -38,13 +38,27 @@ export const NavBar = () => {
                 </a>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">
+                  <a
+                      className="nav-link active"
+                      href="/hoteles"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/hoteles");
+                      }}
+                    >
                       Inicio
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" href="#">
-                      Mi reservacion
+                  <a
+                      className="nav-link active"
+                      href="/reservacion"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/reservacion");
+                      }}
+                    >
+                      Reservacion
                     </a>
                   </li>
                   <li className="nav-item">
