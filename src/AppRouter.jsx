@@ -11,6 +11,7 @@ import { Footer } from "./Principal/components/Footer";
 import { ListaEventos } from "./administrador/components/ListaEventos";
 import { ListaServicio } from "./administrador/components/ListaServicio";
 import { ListaUsuarios } from "./administrador/components/ListaUsuarios";
+import { Registro } from "./login/components/Registro";
 export const AppRouter = () => {
   return (
     <>
@@ -59,12 +60,17 @@ export const AppRouter = () => {
           path="/hotelesCliente"
           element={<Hoteles></Hoteles>}
         ></Route>
+
+        <Route
+          path="/registro"
+          element={<Registro></Registro>}
+        ></Route>
+
         <Route
           path="/habitacion/:id"
           element={<Habitaciones></Habitaciones>}
         ></Route>
       </Routes>
-      <Footer></Footer>
     </>
   );
 };

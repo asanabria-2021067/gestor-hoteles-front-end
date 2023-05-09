@@ -46,6 +46,7 @@ export const ListaUsuarios = () => {
                     </tbody>
                 </table>
             </div>
+            <Footer></Footer>
         </>
     )
 }

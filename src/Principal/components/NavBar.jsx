@@ -83,7 +83,13 @@ export const NavBar = () => {
                     </a>
                   </li>
                   <li className="registro">
-                    <a className="nav-link active">Registrarse</a>
+                    <a className="nav-link active"
+                      href="/registro"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/registro");
+                      }}
+                    >Registrarse</a>
                   </li>
                 </ul>
               </div>
