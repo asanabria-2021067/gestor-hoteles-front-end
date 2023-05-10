@@ -1,6 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
-import { apiEventos } from '../api/apiEventos';
+import { DeleteEvento, apiEventos } from '../api/apiEventos';
+import { Footer } from '../../Principal/components/Footer';
+import { NavBar } from '../../Principal/components/NavBar';
+import { CanvaOpciones } from './CanvaOpciones';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 export const ListaEventos = () => {
     const [listaEventosAdmin, setListaEventosAdmin] = useState([]);
@@ -17,10 +22,33 @@ export const ListaEventos = () => {
     }, [showModal]);
 
 
+    const eliminar = async (id) => {
+        let result = await DeleteEvento(id);
+        if (result) {
+            setListaEventosAdmin(listaEventosAdmin.filter((u) => u._id !== id));
+            Swal.fire({
+                icon: "success",
+                title: "Genial!",
+                text: "Se eliminó el evento correctamente!",
+            });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "No se pudo eliminar el evento.",
+            });
+        }
+    };
+
+
     return (
         <>
+            <NavBar></NavBar>
             <div className="container">
+                <CanvaOpciones></CanvaOpciones>
                 <h2>Lista de eventos</h2>
+                <button id='btn-agregar' className='btn btn-primary'>
+                <Link  id='btn-link' className='nav-item-active' to='/agregarEventoAdmin'>...</Link>Agregar</button>
                 <table className="table">
                     <thead className='thead-dark'>
                         <tr>
@@ -29,6 +57,7 @@ export const ListaEventos = () => {
                             <th scope="col">Fecha Inicio</th>
                             <th scope="col">Fecha Fin</th>
                             <th scope="col">Precio</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,12 +71,26 @@ export const ListaEventos = () => {
                                     <td>{e.fechaInicio}</td>
                                     <td>{e.fechaFinal}</td>
                                     <td>{e.precio}</td>
+                                    <td>
+                                        <button id='btn-editar' className="btn btn-warning"> Editar
+
+                                        </button>
+                                        <button id='btn-eliminar' className='btn btn-danger'
+                                            onClick={() => {
+                                                eliminar(e._id);
+                                            }}
+                                        > Eliminar
+
+                                        </button>
+                                    </td>
                                 </tr>
                             );
                         })}
                     </tbody>
                 </table>
             </div>
+            <br />
+            <Footer></Footer>
         </>
     )
 }

@@ -12,10 +12,18 @@ import { ListaEventos } from "./administrador/components/ListaEventos";
 import { ListaServicio } from "./administrador/components/ListaServicio";
 import { ListaUsuarios } from "./administrador/components/ListaUsuarios";
 import { Registro } from "./login/components/Registro";
+import { CreateEventos } from "./administrador/components/CreateEventos";
 export const AppRouter = () => {
   return (
     <>
       <Routes>
+
+        <Route
+          path="/agregarEventoAdmin"
+          element={
+            <CreateEventos></CreateEventos>
+          }
+        ></Route>
 
         <Route
           path="/"
@@ -42,6 +50,8 @@ export const AppRouter = () => {
             <ListaServicio></ListaServicio>
           }
         ></Route>
+
+
 
         <Route
           path="/listaUsuariosAdmin"

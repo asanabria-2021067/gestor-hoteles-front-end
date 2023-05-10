@@ -283,3 +283,19 @@ body {
 #hotel-card {
   margin-bottom: 15px;
 }
+
+#btn-agregar {
+  margin-bottom: 20px;
+}
+
+#btn-editar {
+  margin-bottom: 20px;
+}
+
+#btn-eliminar {
+  margin-bottom: 20px;
+}
+
+#btn-link {
+  text-decoration: none;
+}
