@@ -13,10 +13,18 @@ import { ListaServicio } from "./administrador/components/ListaServicio";
 import { ListaUsuarios } from "./administrador/components/ListaUsuarios";
 import { Registro } from "./login/components/Registro";
 import { CreateEventos } from "./administrador/components/CreateEventos";
+import { CreateServicio } from "./administrador/components/CreateServicio";
 export const AppRouter = () => {
   return (
     <>
       <Routes>
+
+        <Route
+          path="/agregarServicioAdmin"
+          element={
+            <CreateServicio></CreateServicio>
+          }
+        ></Route>
 
         <Route
           path="/agregarEventoAdmin"

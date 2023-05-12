@@ -48,7 +48,7 @@ export const Registro = () => {
                             <h3 className="fw-normal mb-3 ps-5 pb-3" style={{ letterSpacing: '1px' }}>Registrate</h3>
 
                             <form onSubmit={handleSubmit}>
-                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='Nombre completo' id='formControlLg' type='text' size="lg"
+                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='Nombre completo' type='text' size="lg"
                                     onChange={(event) =>
                                         setAgregar({
                                             usuario: {
@@ -58,7 +58,7 @@ export const Registro = () => {
                                         })
                                     }
                                 />
-                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='Edad' id='formControlLg' type='number' size="lg"
+                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='Edad' type='number' size="lg"
                                     onChange={(event) =>
                                         setAgregar({
                                             usuario: {
@@ -68,7 +68,7 @@ export const Registro = () => {
                                         })
                                     }
                                 />
-                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='No. Identificacion' id='formControlLg' type='number' size="lg"
+                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='No. Identificacion' type='number' size="lg"
                                     onChange={(event) =>
                                         setAgregar({
                                             usuario: {
@@ -78,7 +78,7 @@ export const Registro = () => {
                                         })
                                     }
                                 />
-                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='Correo Electronico' id='formControlLg' type='email' size="lg"
+                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='Correo Electronico' type='email' size="lg"
                                     onChange={(event) =>
                                         setAgregar({
                                             usuario: {
@@ -88,7 +88,7 @@ export const Registro = () => {
                                         })
                                     }
                                 />
-                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='Password' id='formControlLg' type='password' size="lg"
+                                <MDBInput wrapperClass='mb-4 mx-5 w-100' placeholder='Password' type='password' size="lg"
                                     onChange={(event) =>
                                         setAgregar({
                                             usuario: {
@@ -108,7 +108,6 @@ export const Registro = () => {
                                 </button>
                             </form>
                         </div>
-
                     </MDBCol>
 
                     <MDBCol sm='6' className='d-none d-sm-block px-0'>
