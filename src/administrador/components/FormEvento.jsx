@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "react-datepicker/dist/react-datepicker.css";
 import { sendData } from "../helpers/formEventoHelper";
+import { NavBar } from '../../Principal/components/NavBar';
+import { Footer } from '../../Principal/components/Footer';
 
 export const FormEvento = (eventoEdit, option, id) => {
   const [state, setState] = useState(eventoEdit);
@@ -10,7 +11,6 @@ export const FormEvento = (eventoEdit, option, id) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     sendData(state, 2, id);
-
   };
 
 

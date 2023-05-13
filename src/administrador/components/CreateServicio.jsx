@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { sendData } from '../helpers/formServicioHelper';
 import { servicio } from '../models/servicio';
+import { NavBar } from '../../Principal/components/NavBar';
+import { Footer } from '../../Principal/components/Footer';
 
 export const CreateServicio = () => {
     const [agregar, setAgregar] = useState(servicio);
@@ -12,6 +14,8 @@ export const CreateServicio = () => {
 
     return (
         <>
+        <NavBar></NavBar>
+        <br />
             <div className='container'>
                 <h1 id='create-evento'>Crear Servicio</h1>
                 <form onSubmit={handleSubmit}>
@@ -56,8 +60,8 @@ export const CreateServicio = () => {
                             className="form-control"
                             onChange={(event) =>
                                 setAgregar({
-                                    evento: {
-                                        ...agregar.evento,
+                                    servicio: {
+                                        ...agregar.servicio,
                                         precio: event.target.value,
                                     },
                                 })
@@ -70,7 +74,8 @@ export const CreateServicio = () => {
                         </button>
                     </div>
                 </form>
-            </div>
+            </div> 
+            <Footer></Footer>
         </>
     )
 }

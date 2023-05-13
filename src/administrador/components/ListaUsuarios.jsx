@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { apiUsuarios } from '../api/apiUsuarios';
+import { Footer } from '../../Principal/components/Footer';
 
 export const ListaUsuarios = () => {
     const [listaUsuariosA, setListaUsuariosA] = useState([]);
@@ -30,7 +31,7 @@ export const ListaUsuarios = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {listaUsuariosA.map((u, index) => {
+                        {listaUsuariosA.map((u) => {
                             return (
 
                                 <tr key={u._id}>

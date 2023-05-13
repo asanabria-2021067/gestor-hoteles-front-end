@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "645b073709514cbcfb1ac4e8"
+  },
+  "nombre": "papu",
+  "tipo": "Concierto",
+  "fechaInicio": {
+    "$date": "2023-05-09T00:00:00.000Z"
+  },
+  "fechaFinal": {
+    "$date": "2023-05-10T00:00:00.000Z"
+  },
+  "descripcion": "holalalala",
+  "disponibilidad": true,
+  "precio": 15,
+  "img": "Sin imagen",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645d7af585a8d269b08fc370"
+  },
+  "nombre": "papu2e",
+  "tipo": "Concierto",
+  "fechaInicio": {
+    "$date": "2023-05-12T00:00:00.000Z"
+  },
+  "fechaFinal": {
+    "$date": "2023-05-13T00:00:00.000Z"
+  },
+  "descripcion": "papusi",
+  "disponibilidad": true,
+  "precio": 13,
+  "img": "Sin imagen",
+  "__v": 0
+}]

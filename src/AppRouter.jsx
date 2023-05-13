@@ -14,10 +14,34 @@ import { ListaUsuarios } from "./administrador/components/ListaUsuarios";
 import { Registro } from "./login/components/Registro";
 import { CreateEventos } from "./administrador/components/CreateEventos";
 import { CreateServicio } from "./administrador/components/CreateServicio";
+import { ListaHoteles } from "./administrador/components/ListaHoteles";
+import { CreateHoteles } from "./administrador/components/CreateHoteles";
+import { ListaHabitaciones } from "./administrador/components/ListaHabitaciones";
 export const AppRouter = () => {
   return (
     <>
       <Routes>
+
+      <Route
+          path="/listaHabitacionesAdmin"
+          element={
+            <ListaHabitaciones></ListaHabitaciones>
+          }
+        ></Route>
+
+        <Route
+          path="/listaHotelesAdmin"
+          element={
+            <ListaHoteles></ListaHoteles>
+          }
+        ></Route>
+
+        <Route
+          path="/agregarHotelAdmin"
+          element={
+            <CreateHoteles></CreateHoteles>
+          }
+        ></Route>
 
         <Route
           path="/agregarServicioAdmin"

@@ -1,0 +1,69 @@
+[{
+  "_id": {
+    "$oid": "644dab87f732686ddc712bf0"
+  },
+  "nombre": "Luis flores",
+  "edad": 17,
+  "correo": "lflorsssess@gmail.com",
+  "password": "$2a$10$zxpGPn2v4lMx6AXL7.7E4OxVKXSkb5XoegEYLFIsfB0aaZolxOkAe",
+  "identificacion": "3012312",
+  "rol": "ROL_CLIENTE",
+  "estado": true,
+  "img": "Sin imagen",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "644dab9ef732686ddc712bf5"
+  },
+  "nombre": "Angel Sanabria",
+  "edad": 17,
+  "correo": "asana212@gmail.com",
+  "password": "$2a$10$c.DbDMf3HF65suLm63V.Iu8qQI17Iqlh61rqN8HWXbBRb9H6oAJVm",
+  "identificacion": "3012221s2312",
+  "rol": "ROL_ADMINISTRATIVO",
+  "estado": true,
+  "img": "Sin imagen",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6456efb882fea49250060c6c"
+  },
+  "nombre": "Octavio Corzo",
+  "edad": 17,
+  "correo": "ocorzo@gmail.com",
+  "password": "$2a$10$D/.72kh/.r8eO5KdHvwbje3iW39u/cMfbaGltqaxL1nBnHMgpL3ma",
+  "identificacion": "200569",
+  "rol": "ROL_ADMINISTRATIVO",
+  "estado": true,
+  "reservacion": [],
+  "img": "Sin imagen",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645ad556a85c05a995a51304"
+  },
+  "nombre": "Papu Gonzales",
+  "edad": 15,
+  "correo": "papu@gmail.com",
+  "password": "123456",
+  "identificacion": "157964",
+  "rol": "CLIENTE_ROLE",
+  "estado": true,
+  "reservacion": [],
+  "img": "Sin imagen",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645d7f7285a8d269b08fc398"
+  },
+  "nombre": "Juan",
+  "edad": 15,
+  "correo": "juan@gmail.com",
+  "password": "123456",
+  "identificacion": "12415",
+  "rol": "CLIENTE_ROLE",
+  "estado": true,
+  "reservacion": [],
+  "img": "Sin imagen",
+  "__v": 0
+}]

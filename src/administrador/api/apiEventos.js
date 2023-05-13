@@ -31,6 +31,26 @@ export const DeleteEvento = async (id) => {
   }
 };
 
+export const updateEvento = async (id, nombre, fechaInicio, fechaFinal, descripcion, precio, tipo) => {
+  try {
+    const { data: { eventoEditado } } = await axios.put(
+      `${URL}editar/${id}`,
+      {
+        nombre : nombre, descripcion: descripcion, fechaInicio:fechaInicio, fechaFinal:fechaFinal
+        , precio: precio, tipo: tipo
+      },
+      { headers: { "x-token": token } }
+    );
+    return eventoEditado;
+  } catch (error){
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "No se pudo editar el evento!",
+    });
+  }
+};
+
 export const createEvento = async (nombre, fechaInicio, fechaFinal, descripcion, precio, tipo) => {
   console.log(nombre);
   try {

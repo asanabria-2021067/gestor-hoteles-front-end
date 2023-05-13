@@ -1,88 +1,80 @@
 import React, { useEffect, useState } from 'react';
-import { DeleteServicio, apiServicio } from '../api/apiServicio'
+import { DeleteHoteles, apiHoteles } from '../api/apiHoteles';
 import { NavBar } from '../../Principal/components/NavBar';
 import { Footer } from '../../Principal/components/Footer';
+import Swal from 'sweetalert2';
 import { CanvaOpciones } from './CanvaOpciones';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { UpdateEvento } from './UpdateEvento';
 
-
-export const ListaServicio = () => {
-    const [listaServicios, setListaServicios] = useState([]);
+export const ListaHoteles = () => {
+    const [listaHotelesA, setListalistaHotelesA] = useState([]);
+    console.log(listaHotelesA);
     const [showModal, setShowModal] = useState(false);
 
-
-    const viewServiciosList = async () => {
-        const getListServicioFromApi = await apiServicio();
-        setListaServicios(getListServicioFromApi);
-    };
-
-    const handleOpenModal = (s) => {
-        setShowModal(true);
-        setTareas(s);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
+    const viewHotelesList = async () => {
+        const getListaHotelesFromApi = await apiHoteles();
+        setListalistaHotelesA(getListaHotelesFromApi);
     };
 
     useEffect(() => {
-        viewServiciosList();
+        viewHotelesList();
     }, [showModal]);
 
     const eliminar = async (id) => {
-        let result = await DeleteServicio(id);
+        let result = await DeleteHoteles(id);
         if (result) {
-            setListaServicios(listaServicios.filter((u) => u._id !== id));
+            setListalistaHotelesA(listaHotelesA.filter((u) => u._id !== id));
             Swal.fire({
                 icon: "success",
                 title: "Genial!",
-                text: "Se eliminó el servicio correctamente!",
+                text: "Se eliminó el hotel correctamente!",
             });
         } else {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "No se pudo eliminar el servicio.",
+                text: "No se pudo eliminar el hotel.",
             });
         }
     };
 
     return (
         <>
-            <NavBar></NavBar>
+        <NavBar></NavBar>
             <div className="container">
+                <h2>Lista de hoteles</h2>
                 <CanvaOpciones></CanvaOpciones>
-                <h2>Lista de servicios</h2>
                 <button id='btn-agregar' className='btn btn-primary'>
-                    <Link id='btn-link' className='nav-item-active' to='/agregarServicioAdmin'>...</Link>Agregar</button>
+                <Link  id='btn-link' className='nav-item-active' to='/agregarHotelAdmin'>...</Link>Agregar</button>
                 <table className="table">
                     <thead className='thead-dark'>
                         <tr>
                             <th scope='col'>ID</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Descripcion</th>
+                            <th scope="col">Pais</th>
+                            <th scope="col">Direccion</th>
+                            <th scope='col'>Reservaciones</th>
+                            <th scope='col'>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {listaServicios.map((s) => {
+                        {listaHotelesA.map((u) => {
                             return (
 
-                                <tr key={s._id}>
-                                    <th scope="row">{s._id}</th>
+                                <tr key={u._id}>
+                                    <th scope="row">{u._id}</th>
 
-                                    <td>{s.nombre}</td>
-                                    <td>{s.precio}</td>
-                                    <td>{s.descripcion}</td>
+                                    <td>{u.nombre}</td>
+                                    <td>{u.pais}</td>
+                                    <td>{u.direccion}</td>
+                                    <td>{u.reservaciones}</td>
                                     <td>
-                                        <button className="btn btn-warning" onClick={() => handleOpenModal(u)}>
-                                            Editar
+                                        <button id='btn-editar' className="btn btn-warning"> Editar
+
                                         </button>
                                         <button id='btn-eliminar' className='btn btn-danger'
                                             onClick={() => {
-                                                eliminar(s._id);
+                                                eliminar(u._id);
                                             }}
                                         > Eliminar
 

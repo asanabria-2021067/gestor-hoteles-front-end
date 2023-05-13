@@ -1,34 +1,36 @@
 import React, { useState } from 'react';
 import { evento } from '../models/evento';
 import { Modal } from "react-bootstrap";
-import { sendData } from '../helpers/formEventoHelper';
+import { sendData } from '../helpers/formHotelHelper';
 import { NavBar } from '../../Principal/components/NavBar';
 import { Footer } from '../../Principal/components/Footer';
+import { hotel } from '../models/hotel';
 
-export const CreateEventos = () => {
-    const [agregar, setAgregar] = useState(evento);
-
+export const CreateHoteles = () => {
+    const [agregar, setAgregar] = useState(hotel);
+    console.log(agregar)
     const handleSubmit = (event) => {
         event.preventDefault();
-        sendData(agregar, 1, 0);
+        sendData(agregar, 1 );
     };
 
     return (
         <>
         <NavBar></NavBar>
+        <br />
             <div className='container'>
-                <h1 id='create-evento'>Crear evento</h1>
+                <h1 id='create-evento'>Agregar Hotel</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label className="text-black">Nombre evento</label>
+                        <label className="text-black">Nombre del hotel:</label>
                         <input
                             type="text"
                             className="form-control"
                             name="nombre"
                             onChange={(event) =>
                                 setAgregar({
-                                    evento: {
-                                        ...agregar.evento,
+                                    hotel: {
+                                        ...agregar.hotel,
                                         nombre: event.target.value,
                                     },
                                 })
@@ -37,16 +39,16 @@ export const CreateEventos = () => {
                     </div>
 
                     <div className="form-group">
-                        <label className="text-black">Descripcion</label>
+                        <label className="text-black">Pais</label>
                         <br />
                         <input
                             type="text"
                             className="form-control"
                             onChange={(event) =>
                                 setAgregar({
-                                    evento: {
-                                        ...agregar.evento,
-                                        descripcion: event.target.value,
+                                    hotel: {
+                                        ...agregar.hotel,
+                                        pais: event.target.value,
                                     },
                                 })
                             }
@@ -54,62 +56,31 @@ export const CreateEventos = () => {
                     </div>
                     
                     <div className="form-group">
-                        <label className="text-black">Fecha de inicio</label>
+                        <label className="text-black">Direccion</label>
                         <br />
-                        <input
-                            type="date"
-                            className="form-control"
-                            onChange={(event) =>
-                                setAgregar({
-                                    evento: {
-                                        ...agregar.evento,
-                                        fechaInicio: event.target.value,
-                                    },
-                                })
-                            }
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label className="text-black">Fecha de finalización</label>
-                        <br />
-                        <input
-                            type="date"
-                            className="form-control"
-                            onChange={(event) =>
-                                setAgregar({
-                                    evento: {
-                                        ...agregar.evento,
-                                        fechaFinal: event.target.value,
-                                    },
-                                })
-                            }
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label className="text-black">Precio</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            onChange={(event) =>
-                                setAgregar({
-                                    evento: {
-                                        ...agregar.evento,
-                                        precio: event.target.value,
-                                    },
-                                })
-                            }
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label className="text-black">Tipo</label>
                         <input
                             type="text"
                             className="form-control"
                             onChange={(event) =>
                                 setAgregar({
-                                    evento: {
-                                        ...agregar.evento,
-                                        tipo: event.target.value,
+                                    hotel: {
+                                        ...agregar.hotel,
+                                        direccion: event.target.value,
+                                    },
+                                })
+                            }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="text-black">Reservaciones</label>
+                        <input
+                            type="number"
+                            className="form-control"
+                            onChange={(event) =>
+                                setAgregar({
+                                    hotel: {
+                                        ...agregar.hotel,
+                                        reservaciones: event.target.value,
                                     },
                                 })
                             }
@@ -122,7 +93,6 @@ export const CreateEventos = () => {
                     </div>
                 </form>
             </div>
-            <br />
             <br />
             <Footer></Footer>
         </>

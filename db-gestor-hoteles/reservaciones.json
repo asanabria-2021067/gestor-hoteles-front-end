@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "6456efb882fea49250060c6d"
+  },
+  "usuario": {
+    "$oid": "6456efb882fea49250060c6c"
+  },
+  "habitaciones": [],
+  "servicios": [],
+  "eventos": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645ad556a85c05a995a51305"
+  },
+  "usuario": {
+    "$oid": "645ad556a85c05a995a51304"
+  },
+  "habitaciones": [],
+  "servicios": [],
+  "eventos": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645d7f7285a8d269b08fc399"
+  },
+  "usuario": {
+    "$oid": "645d7f7285a8d269b08fc398"
+  },
+  "habitaciones": [],
+  "servicios": [],
+  "eventos": [],
+  "__v": 0
+}]

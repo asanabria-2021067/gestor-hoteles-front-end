@@ -1,29 +1,30 @@
 import Swal from "sweetalert2";
-import { createServicio } from "../api/apiServicio";
+import { createHotel } from "../api/apiHoteles";
 
-export const sendData = async (state, option, id) => {
+export const sendData = async (state, option) => {
     let resultado;
     console.log(state);
     switch (option) {
       case 1:
-        resultado = await createServicio({
-          nombre: state.servicio.nombre,
-          descripcion: state.servicio.descripcion,
-          precio: state.servicio.precio,
+        resultado = await createHotel({
+          nombre: state.hotel.nombre,
+          pais: state.hotel.pais,
+          direccion: state.hotel.direccion,
+          reservaciones: state.hotel.reservaciones
         }
         );
         if (resultado) {
           Swal.fire({
             icon: "success",
             title: "Genial!",
-            text: "Servicio creado correctamente!",
+            text: "Hotel agregado correctamente!",
             showConfirmButton: true,
             confirmButtonText: "Ok",
           }).then((result) => {
             if (result.isConfirmed) {
-              window.location.href = "/listaServiciosAdmin";
+              window.location.href = "/listaHotelesAdmin";
             } else {
-              window.location.href = "/listaServiciosAdmin";
+              window.location.href = "/listaHotelesAdmin";
             }
           });
         }

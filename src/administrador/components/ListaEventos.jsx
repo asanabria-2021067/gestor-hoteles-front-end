@@ -6,9 +6,13 @@ import { NavBar } from '../../Principal/components/NavBar';
 import { CanvaOpciones } from './CanvaOpciones';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { evento } from "../models/evento";
+import { UpdateEvento } from './UpdateEvento';
 
 export const ListaEventos = () => {
     const [listaEventosAdmin, setListaEventosAdmin] = useState([]);
+    const [eventos, setEvento] = useState(evento)
+    console.log(evento)
     console.log(listaEventosAdmin);
     const [showModal, setShowModal] = useState(false);
 
@@ -20,6 +24,15 @@ export const ListaEventos = () => {
     useEffect(() => {
         viewEventosList();
     }, [showModal]);
+
+    const handleOpenModal = (e) => {
+        setShowModal(true);
+        setEvento(e);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
 
 
     const eliminar = async (id) => {
@@ -48,7 +61,7 @@ export const ListaEventos = () => {
                 <CanvaOpciones></CanvaOpciones>
                 <h2>Lista de eventos</h2>
                 <button id='btn-agregar' className='btn btn-primary'>
-                <Link  id='btn-link' className='nav-item-active' to='/agregarEventoAdmin'>...</Link>Agregar</button>
+                    <Link id='btn-link' className='nav-item-active' to='/agregarEventoAdmin'>...</Link>Agregar</button>
                 <table className="table">
                     <thead className='thead-dark'>
                         <tr>
@@ -72,12 +85,12 @@ export const ListaEventos = () => {
                                     <td>{e.fechaFinal}</td>
                                     <td>{e.precio}</td>
                                     <td>
-                                        <button id='btn-editar' className="btn btn-warning"> Editar
+                                        <button id='btn-editar' className="btn btn-warning" onClick={() => handleOpenModal(e)}> Editar
 
                                         </button>
                                         <button id='btn-eliminar' className='btn btn-danger'
                                             onClick={() => {
-                                                eliminar(e._id);
+                                                eliminar(e._id);s
                                             }}
                                         > Eliminar
 
@@ -88,6 +101,11 @@ export const ListaEventos = () => {
                         })}
                     </tbody>
                 </table>
+                <UpdateEvento>
+                    eventoEdit={eventos}
+                    isOpen={showModal}
+                    onClose={() => handleCloseModal()}
+                </UpdateEvento>
             </div>
             <br />
             <Footer></Footer>

@@ -1,0 +1,44 @@
+[{
+  "_id": {
+    "$oid": "644db408f732686ddc712bff"
+  },
+  "numero": 1231,
+  "disponibilidad": true,
+  "costo": 300,
+  "capacidad": 4,
+  "hotel": {
+    "$oid": "644dabd0f732686ddc712bf9"
+  },
+  "descripcion": "Linda habitacion con dos baños y un dormitorio",
+  "img": "",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "644dbc85019bf5ed0b740b88"
+  },
+  "numero": 1232,
+  "disponibilidad": true,
+  "costo": 300,
+  "capacidad": 4,
+  "hotel": {
+    "$oid": "644dabd0f732686ddc712bf9"
+  },
+  "descripcion": "Linda habitacion con dos baños y un dormitorio",
+  "img": "",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6455b59fd254cc8b57367a92"
+  },
+  "tipo": "Habitacion fina",
+  "numero": 1233,
+  "disponibilidad": true,
+  "costo": 300,
+  "capacidad": 4,
+  "hotel": {
+    "$oid": "644dabd0f732686ddc712bf9"
+  },
+  "descripcion": "Linda habitacion con dos baños y un dormitorio",
+  "img": "https://content.r9cdn.net/himg/f7/a2/4b/revato-640945-12365875-636224.jpg",
+  "__v": 0
+}]

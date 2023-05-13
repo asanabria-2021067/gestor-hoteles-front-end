@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "644dabd0f732686ddc712bf9"
+  },
+  "nombre": "Hotel Mayan",
+  "estado": true,
+  "calificacion": 4.5,
+  "pais": "Dinamarca",
+  "direccion": "12 avenida",
+  "servicios": [],
+  "administrador": {
+    "$oid": "644dab9ef732686ddc712bf5"
+  },
+  "trabajadores": [],
+  "habitaciones": [
+    {
+      "$oid": "644db408f732686ddc712bff"
+    },
+    {
+      "$oid": "644dbc85019bf5ed0b740b88"
+    },
+    {
+      "$oid": "6455b535bb0452c16d39f7a1"
+    },
+    {
+      "$oid": "6455b565c695dea28bbf7125"
+    },
+    {
+      "$oid": "6455b59fd254cc8b57367a92"
+    }
+  ],
+  "eventos": [
+    {
+      "$oid": "645b073709514cbcfb1ac4e8"
+    },
+    {
+      "$oid": "645d7af585a8d269b08fc370"
+    }
+  ],
+  "reservaciones": 0,
+  "img": "https://media-cdn.tripadvisor.com/media/photo-s/28/67/17/19/absalon-nat.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6456f02482fea49250060c73"
+  },
+  "nombre": "PapuHotel",
+  "estado": true,
+  "calificacion": 4.5,
+  "pais": "USA",
+  "direccion": "13 avenida",
+  "servicios": [
+    {
+      "$oid": "6456fda382fea49250060cb1"
+    },
+    {
+      "$oid": "6456fdb673210ec51c5306d9"
+    }
+  ],
+  "administrador": {
+    "$oid": "6456efb882fea49250060c6c"
+  },
+  "trabajadores": [],
+  "habitaciones": [],
+  "eventos": [
+    {
+      "$oid": "6456ff7d7862de32ea038f4c"
+    }
+  ],
+  "reservaciones": 0,
+  "img": "https://turismoglobal.com/wp-content/uploads/2020/04/preview-thumb-1.jpg",
+  "__v": 0
+}]

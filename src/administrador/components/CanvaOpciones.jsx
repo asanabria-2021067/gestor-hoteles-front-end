@@ -52,7 +52,19 @@ export const CanvaOpciones = () => {
                         >
                             Usuarios
                         </a>
-                    </ul>                   
+                    </ul>       
+                    <ul className="nav-item">
+                        <a
+                            className="nav-link active"
+                            href="/listaUsuariosAdmin"
+                            onClick={(event) => {
+                                event.preventDefault();
+                                navigate("/listaHotelesAdmin");
+                            }}
+                        >
+                            Hoteles
+                        </a>
+                    </ul>                 
                 </div>
             </div>
             <br />
