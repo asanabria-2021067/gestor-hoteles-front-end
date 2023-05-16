@@ -10,6 +10,7 @@ export const Login = () => {
     event.preventDefault();
     const result = await apiLogin(correo, password);
     if (result) {
+      console.log(result.split('.'));
       Swal.fire({
         icon: "success",
         title: "Genial!",
@@ -17,10 +18,21 @@ export const Login = () => {
         confirmButtonText: "Ok",
       }).then((r) => {
         if (result) {
-          window.location.href = "/hoteles";
-        } else {
-          window.location.href = "/";
+          if (r.isConfirmed) {
+            const [header, payload, signature] = result.split('.');
+            const decodedPayload = JSON.parse(atob(payload));
+            console.log(decodedPayload)
+            const rolUsuario = decodedPayload.rol;
+            console.log(rolUsuario);
+          if (rolUsuario == "ROL_SUPERADMIN") {
+            window.location.href = "/listaHabitacionesAdmin";
+          } else if (rolUsuario == "ROL_ADMINISTRADOR") {
+            window.location.href = "/hoteles";
+          } else {
+            window.location.href = "/hoteles";
+          }
         }
+      }
       });
     }
   };

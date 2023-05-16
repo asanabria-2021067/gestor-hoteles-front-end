@@ -1,7 +1,7 @@
 import React from "react";
 import { App } from "./Principal/components/App";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { isUserLogged } from "./login/helpers/loginHelper";
+import { isSuperAdmin, isUserLogged } from "./login/helpers/loginHelper";
 import { Login } from "./login/components/Login";
 import { Hotel } from "./cliente/Principal/components/Hotel";
 import { Habitaciones } from "./cliente/Habitacion/components/Habitaciones";
@@ -13,7 +13,16 @@ import { ServicioId } from "./cliente/Servicio/components/ServicioPorId";
 import { EventoId } from "./cliente/Evento/components/EventoPorId";
 import { Hoteles } from "./Principal/components/Hoteles";
 import { Perfil } from "./cliente/Usuario/components/Perfil";
+import { ListaHabitaciones } from "./super-admin/Habitaciones/components/ListaHabitaciones";
+import { ListaHoteles } from "./super-admin/Hoteles/components/ListaHoteles";
+import { CreateHoteles } from "./super-admin/Hoteles/components/CreateHoteles";
+import { ListaEventos } from "./super-admin/Eventos/components/ListaEventos";
+import { CreateEventos } from "./super-admin/Eventos/components/CreateEventos";
+import { ListaServicio } from "./super-admin/Servicios/components/ListaServicio";
+import { CreateServicio } from "./super-admin/Servicios/components/CreateServicio";
+import { ListaUsuarios } from "./super-admin/Usuarios/components/ListaUsuarios";
 export const AppRouter = () => {
+  const userIsSuperAdmin = isSuperAdmin();
   return (
     <>
       <Routes>
@@ -40,9 +49,7 @@ export const AppRouter = () => {
         ></Route>
         <Route
           path="/hoteles"
-          element={
-            isUserLogged() ? <Hotel></Hotel> : <Navigate to="/app" />
-          }
+          element={isUserLogged() ? <Hotel></Hotel> : <Navigate to="/app" />}
         ></Route>
         <Route path="/hotelesVista" element={<Hoteles></Hoteles>}></Route>
         <Route
@@ -82,16 +89,56 @@ export const AppRouter = () => {
         <Route
           path="/reservacion"
           element={
-            isUserLogged() ? (
+            isUserLogged() ? 
               <Reservacion></Reservacion>
-            ) : (
+            : 
               <Navigate to="/app" />
-            )
+            
           }
         ></Route>
 
-        {/* RUTAS ADMIN HOTEL */}
-        
+        {/* RUTAS SUPER ADMIN */}
+        {userIsSuperAdmin && (
+        <Route
+          path="/listaHabitacionesAdmin"
+          element={<ListaHabitaciones></ListaHabitaciones>}
+        ></Route>
+        )}
+
+        <Route
+          path="/listaHotelesAdmin"
+          element={<ListaHoteles></ListaHoteles>}
+        ></Route>
+
+        <Route
+          path="/agregarHotelAdmin"
+          element={<CreateHoteles></CreateHoteles>}
+        ></Route>
+
+        <Route
+          path="/listaEventosAdmin"
+          element={<ListaEventos></ListaEventos>}
+        ></Route>
+
+        <Route
+          path="/agregarEventoAdmin"
+          element={<CreateEventos></CreateEventos>}
+        ></Route>
+
+        <Route
+          path="/listaServiciosAdmin"
+          element={<ListaServicio></ListaServicio>}
+        ></Route>
+
+        <Route
+          path="/agregarServicioAdmin"
+          element={<CreateServicio></CreateServicio>}
+        ></Route>
+
+        <Route
+          path="/listaUsuariosAdmin"
+          element={<ListaUsuarios></ListaUsuarios>}
+        ></Route>
       </Routes>
     </>
   );

@@ -10,17 +10,14 @@ export const isAdmin = () => {
     return authUser("ROL_CLIENTE");
   };
   
-  export const authUser = (userTypes) => {
+  export const authUser = (rol) => {
     const token = localStorage.getItem('token');
     if (token) {
       const [header, payload, signature] = token.split('.');
       const decodedPayload = JSON.parse(atob(payload));
       const userRole = decodedPayload.rol;
-  
-      // if (Array.isArray(userTypes) && userTypes.includes(userRole)) {
-      //   return true;
-      // } else 
-      if (userRole === userTypes) {
+
+      if (userRole === rol) {
         return true;
       }
     }
