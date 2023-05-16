@@ -32,7 +32,8 @@ export const sendData = async (state, option, id) => {
       }
       break;
     case 2:
-      resultado = await updateEvento(state.evento._id, {
+      resultado = await updateEvento({
+        id: state.evento._id,
         nombre: state.evento.nombre,
         fechaInicio: state.evento.fechaInicio,
         fechaFinal: state.evento.fechaFinal,
@@ -49,9 +50,9 @@ export const sendData = async (state, option, id) => {
           confirmButtonText: "Ok",
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = "/";
+            window.location.href = "/listaEventosAdmin";
           } else {
-            window.location.href = "/";
+            window.location.href = "/listaEventosAdmin";
           }
         });
       }
