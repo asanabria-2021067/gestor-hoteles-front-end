@@ -12,6 +12,30 @@ export const apiServicio = async () => {
   } catch (error) {}
 };
 
+export const updateServicio = async (id,
+  nombre, precio, descripcion, 
+) => {
+  console.log(id);
+  try {
+    const servicioEditado = await axios.put(
+      `${URL}editar/${id.id}`,
+      {
+        nombre: id.nombre,
+        precio: id.precio,
+        descripcion: id.descripcion,
+      },
+      { headers: { "x-token": token } }
+    );
+    return servicioEditado.data;
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "No se pudo editar el servicio!",
+    });
+  }
+};
+
 export const DeleteServicio = async (id) => {
   try {
     const { data } = await axios.delete(`${URL}eliminar/${id}`, { headers: { "x-token": token}});

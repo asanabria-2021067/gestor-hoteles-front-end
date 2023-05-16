@@ -6,12 +6,14 @@ import { CanvaOpciones } from './CanvaOpciones';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { UpdateEvento } from './UpdateEvento';
+import { UpdateServicio } from './UpdateServicio';
+import { servicio } from '../models/servicio';
 
 
 export const ListaServicio = () => {
     const [listaServicios, setListaServicios] = useState([]);
     const [showModal, setShowModal] = useState(false);
-
+    const [servicios, setServicios] = useState(servicio)
 
     const viewServiciosList = async () => {
         const getListServicioFromApi = await apiServicio();
@@ -20,7 +22,7 @@ export const ListaServicio = () => {
 
     const handleOpenModal = (s) => {
         setShowModal(true);
-        setTareas(s);
+        setServicios(s);
     };
 
     const handleCloseModal = () => {
@@ -77,7 +79,7 @@ export const ListaServicio = () => {
                                     <td>{s.precio}</td>
                                     <td>{s.descripcion}</td>
                                     <td>
-                                        <button className="btn btn-warning" onClick={() => handleOpenModal(u)}>
+                                        <button className="btn btn-warning" onClick={() => handleOpenModal(s)}>
                                             Editar
                                         </button>
                                         <button id='btn-eliminar' className='btn btn-danger'
@@ -93,6 +95,11 @@ export const ListaServicio = () => {
                         })}
                     </tbody>
                 </table>
+                <UpdateServicio
+                    servicioEdit={servicios}
+                    isOpen={showModal}
+                    onClose={() => handleCloseModal()}
+                ></UpdateServicio>
             </div>
             <Footer></Footer>
         </>

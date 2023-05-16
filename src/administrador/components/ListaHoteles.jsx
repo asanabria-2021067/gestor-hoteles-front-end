@@ -5,11 +5,14 @@ import { Footer } from '../../Principal/components/Footer';
 import Swal from 'sweetalert2';
 import { CanvaOpciones } from './CanvaOpciones';
 import { Link } from 'react-router-dom';
+import { UpdateHotel } from './UpdateHotel';
+import { hotel } from '../models/hotel';
 
 export const ListaHoteles = () => {
     const [listaHotelesA, setListalistaHotelesA] = useState([]);
     console.log(listaHotelesA);
     const [showModal, setShowModal] = useState(false);
+    const [hoteles, setHoteles] = useState(hotel)
 
     const viewHotelesList = async () => {
         const getListaHotelesFromApi = await apiHoteles();
@@ -19,6 +22,15 @@ export const ListaHoteles = () => {
     useEffect(() => {
         viewHotelesList();
     }, [showModal]);
+
+    const handleOpenModal = (u) => {
+        setShowModal(true);
+        setHoteles(u);
+      };
+    
+      const handleCloseModal = () => {
+        setShowModal(false);
+      };
 
     const eliminar = async (id) => {
         let result = await DeleteHoteles(id);
@@ -40,12 +52,12 @@ export const ListaHoteles = () => {
 
     return (
         <>
-        <NavBar></NavBar>
+            <NavBar></NavBar>
             <div className="container">
                 <h2>Lista de hoteles</h2>
                 <CanvaOpciones></CanvaOpciones>
                 <button id='btn-agregar' className='btn btn-primary'>
-                <Link  id='btn-link' className='nav-item-active' to='/agregarHotelAdmin'>...</Link>Agregar</button>
+                    <Link id='btn-link' className='nav-item-active' to='/agregarHotelAdmin'>...</Link>Agregar</button>
                 <table className="table">
                     <thead className='thead-dark'>
                         <tr>
@@ -69,7 +81,7 @@ export const ListaHoteles = () => {
                                     <td>{u.direccion}</td>
                                     <td>{u.reservaciones}</td>
                                     <td>
-                                        <button id='btn-editar' className="btn btn-warning"> Editar
+                                        <button id='btn-editar' className="btn btn-warning" onClick={() => handleOpenModal(u)} > Editar
 
                                         </button>
                                         <button id='btn-eliminar' className='btn btn-danger'
@@ -85,6 +97,11 @@ export const ListaHoteles = () => {
                         })}
                     </tbody>
                 </table>
+                <UpdateHotel
+                    hotelEdit={hoteles}
+                    isOpen={showModal}
+                    onClose={() => handleCloseModal()}
+                ></UpdateHotel>
             </div>
             <Footer></Footer>
         </>

@@ -12,18 +12,17 @@ export const apiHoteles = async () => {
   } catch (error) {}
 };
 
-export const updateHotel = async (
+export const updateHotel = async (id,
   nombre, pais, direccion, reservaciones
 ) => {
-  console.log(nombre)
-  console.log(direccion)
+  console.log(id);
   try {
     const hotelEditado = await axios.put(
-      `${URL}editar`,
+      `${URL}editar/${id.id}`,
       {
-        nombre: nombre,
-        direccion: direccion,
-        pais: pais,
+        nombre: id.nombre,
+        direccion: id.direccion,
+        pais: id.pais,
         reservaciones: reservaciones
       },
       { headers: { "x-token": token } }

@@ -101,10 +101,11 @@ export const ListaEventos = () => {
                         })}
                     </tbody>
                 </table>
-                <UpdateEvento>
+                <UpdateEvento
                     eventoEdit={eventos}
                     isOpen={showModal}
                     onClose={() => handleCloseModal()}
+                >   
                 </UpdateEvento>
             </div>
             <br />

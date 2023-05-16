@@ -4,16 +4,12 @@ import { NavBar } from '../../Principal/components/NavBar';
 import { Footer } from '../../Principal/components/Footer';
 
 export const FormEvento = (eventoEdit, option, id) => {
-  const [state, setState] = useState(eventoEdit);
   
-
-
+  const [state, setState] = useState(eventoEdit);
   const handleSubmit = (event) => {
     event.preventDefault();
     sendData(state, 2, id);
   };
-
-
 
   return (
     <form onSubmit={handleSubmit}>

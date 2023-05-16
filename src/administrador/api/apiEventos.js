@@ -32,12 +32,17 @@ export const DeleteEvento = async (id) => {
 };
 
 export const updateEvento = async (id, nombre, fechaInicio, fechaFinal, descripcion, precio, tipo) => {
+  console.log(id);
   try {
     const { data: { eventoEditado } } = await axios.put(
-      `${URL}editar/${id}`,
+      `${URL}editarEvento/${id.id}`,
       {
-        nombre : nombre, descripcion: descripcion, fechaInicio:fechaInicio, fechaFinal:fechaFinal
-        , precio: precio, tipo: tipo
+        nombre : id.nombre, 
+        descripcion: id.descripcion, 
+        fechaInicio: id.fechaInicio, 
+        fechaFinal: id.fechaFinal, 
+        precio: id.precio, 
+        tipo: id.tipo
       },
       { headers: { "x-token": token } }
     );
