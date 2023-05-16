@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import img from '../img/de-viaje.png';
 export const NavBar = () => {
     const location = useLocation();
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export const NavBar = () => {
               >
                 <a className="navbar-brand" href="#">
                   <img
-                    src="src\assets\de-viaje.png"
+                    src={img}
                     alt="HotelSelecto"
                     width="30"
                     height="24"
@@ -62,7 +62,12 @@ export const NavBar = () => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active">Ofertas</a>
+                    <a className="nav-link active"  
+                    href="/miPerfil"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/miPerfil");
+                      }}>Mi Perfil</a>
                   </li>
                   <li className="inicioSesion">
                     <a

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { apiHabitaciones } from "../api/apiHabitaciones";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { HabitacionPorId } from "./HabitacionPorId";
+import { NavBar } from "../../Navbar-Usuario";
 
 export const Habitaciones = () => {
   const [listaHabitaciones, setListaHabitaciones] = useState([]);
@@ -20,6 +21,7 @@ export const Habitaciones = () => {
 
   return (
     <>
+    <NavBar/>
       <div className="container">
         <h1 className="h1">Lista de habitaciones:</h1>
         {listaHabitaciones.map((h) => {

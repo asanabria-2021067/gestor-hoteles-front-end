@@ -21,7 +21,7 @@ export const agregarServicios = async (id) => {
   try {
     console.log( "AGREGAR")
     console.log("TOKEN", token)
-    const servicioId = await axios.post(`${URLRESERVA}agregarServicios/${id}` , null, { headers: { "x-token": token } });
+    const servicioId = await axios.post(`${URLRESERVA}agregarServicios/${id}` ,null,  { headers: { "x-token": token } });
     console.log(servicioId.data)
     return servicioId.data;
   } catch (error) {}

@@ -16,3 +16,33 @@ export const apiReservacion = async() => {
         console.log(error)
     }
 }
+export const deleteHabitaciones = async(id) => {
+    try {
+        console.log(token)
+        const reservacion = await axios.delete(`${URL}eliminarHabitacion/${id}` , { headers: { "x-token": token } });
+        console.log("AAA", reservacion.data)
+        return reservacion.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+export const deleteServicios = async(id) => {
+    try {
+        console.log(token)
+        const reservacion = await axios.delete(`${URL}eliminarServicio/${id}` , { headers: { "x-token": token } });
+        console.log("AAA", reservacion.data)
+        return reservacion.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+export const deleteEventos = async(id) => {
+    try {
+        console.log(token)
+        const reservacion = await axios.delete(`${URL}eliminarEvento/${id}` , { headers: { "x-token": token } });
+        console.log("AAA", reservacion.data)
+        return reservacion.data;
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -30,7 +30,7 @@ export const NavBar = () => {
               >
                 <a className="navbar-brand" href="#">
                   <img
-                    src="./src/assets/de-viaje.png"
+                    src="src/img/de-viaje.png"
                     alt="HotelSelecto"
                     width="30"
                     height="24"

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mapa } from "./Mapa";
 import { useNavigate } from "react-router-dom";
 
 export const Cards = ({hotel}) => {
+  const [mapInstance, setMapInstance] = useState(null);
   const navigate = useNavigate();
   return (
     <>
@@ -18,13 +19,13 @@ export const Cards = ({hotel}) => {
               navigate(`/habitacion/${h._id}`);
             }}>
             <div className="card mb-3 mt-4">
-              <div className="row g-0">
-                <div className="col-md-3">
+              <div className="row">
+                <div className="col-12 col-md-3 col-sm-12 col-xs-12">
                   <img
                     src={h.img}
                   />
                 </div>
-                <div className="col-md-8 ms-auto">
+                <div className="col-12 col-md-8 col-sm-12 col-xs-12 ms-auto">
                   <div className="card-body">
                     <h5 className="card-title">Hotel: {h.nombre}</h5>
                     <p className="card-text">Pais: {h.pais}</p>
@@ -41,7 +42,7 @@ export const Cards = ({hotel}) => {
           )}
           </div>
           <div className="mapa col-md-5 mt-2">
-              <Mapa hotel={hotel}/>
+          <Mapa hotel={hotel} mapInstance={mapInstance} setMapInstance={setMapInstance} />
           </div>
           </div>
      </div>

@@ -26,3 +26,12 @@ export const agregarEventos = async (id) => {
     return eventoId.data;
   } catch (error) {}
 };
+export const actualizoPrecio = async (id) => {
+  try {
+    console.log( "AGREGAR")
+    console.log("TOKEN", token)
+    const eventoId = await axios.post(`${URLRESERVA}precioEvento`, { headers: { "x-token": token } });
+    console.log(eventoId.data)
+    return eventoId.data;
+  } catch (error) {}
+};

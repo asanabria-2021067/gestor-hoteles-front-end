@@ -1,179 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300&display=swap');
+
 body {
-	background-image: linear-gradient(45deg,
-			hsl(240deg 36% 82%) 0%,
-			hsl(240deg 36% 84%) 11%,
-			hsl(241deg 36% 86%) 22%,
-			hsl(241deg 37% 88%) 33%,
-			hsl(241deg 37% 90%) 44%,
-			hsl(242deg 37% 92%) 56%,
-			hsl(242deg 37% 94%) 67%,
-			hsl(242deg 37% 96%) 78%,
-			hsl(242deg 37% 98%) 89%,
-			hsl(0deg 0% 100%) 100%);
+  background-color: #EDEDED;
+}
+
+.h1 {
+  margin-top: 25px;
+  text-align: center;
+  border-radius: 12px;
+  border-radius: 8px;
+  background-color: #0f4c75;
+  color: white;
+  font-size: 40px;
+  border-width: 50px;
 }
 
 .footer {
-	background: #1e1e1f;
-	color: white;
+  background: #1e1e1f;
+  color: white;
 }
 
 .links li a {
-	color: white;
-	transition: color .2s;
-	text-decoration: none;
+  color: white;
+  transition: color .2s;
+  text-decoration: none;
 }
 
 .links li a:hover {
-	color: #4180CB;
+  color: #4180CB;
 }
-
-
 
 .copyright p {
-	border-top: 1px solid rgba(255, 255, 255, .1);
+  border-top: 1px solid rgba(255, 255, 255, .1);
 }
+
 .buscador {
-    width: 100%;
+  width: 100%;
 }
-  
-  .buscador h1 {
-    font-size: 32px;
-    text-align: center;
-  }
-  
-  .input-group {
-    margin-left: 0%;
-    width: 90%
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-    margin-left: 10%;
-  }
-  
-  .input-group input,
-  .input-group select {
-    width: 100%;
-    padding: 10px;
-    padding-right: 200px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .input-group button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin-left: 10%;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .input-group button:hover {
-    background-color: #3e8e41;
-  }
 
-  .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .formBusca {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .search-box {
-    flex: 1;
-    width: 900px;
-    margin-right: 10px;
-    font-size: 16px;
-  }
-  
-  .search-box input[type="text"] {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: none;
-  }
-  
-  .date-box {
-    display: flex;
-    flex: 1;
-    max-width: 280px;
-    margin-right: 10px;
-  }
-  
-  .date-box input[type="date"] {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: none;
-    margin-right: 5px;
-  }
-  
-  .guest-box {
-    display: flex;
-    flex: 1;
-    max-width: 400px;
-    margin-right: 15px;
-  }
-  
-  .guest-box input[type="number"] {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: none;
-    margin-right: 5px;
-  }
-  
-  .submit-box {
-    flex: 1;
-    margin-left: 20px;
-    max-width: 400px;
-  }
-  
-  .submit-box .btnReserva {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    background-color: #6c5ce7;
-    color: #ffffff;
-    border: none;
-    text-decoration: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .submit-box .btnReserva:hover {
-    background-color: #4834d4;
-  }
+.buscador h1 {
+  font-size: 32px;
+  text-align: center;
+}
 
-  .submit-box .btnBuscar {
-    width: 70%;
-    padding: 12px;
-    font-size: 20px;
-    text-align: center;
-    background-color: #6c5ce7;
-    color: #ffffff;
-    border: none;
-    text-decoration: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .submit-box .btnBuscar:hover {
-    background-color: #4834d4;
-  }
- /* .buscador{
+.input-group {
+  margin-left: 0%;
+  width: 90%
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 10%;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  padding-right: 200px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.input-group button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 10%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-group button:hover {
+  background-color: #3e8e41;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.formBusca {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  flex: 1;
+  width: 900px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.search-box input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+}
+
+.date-box {
+  display: flex;
+  flex: 1;
+  max-width: 280px;
+  margin-right: 10px;
+}
+
+.date-box input[type="date"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  margin-right: 5px;
+}
+
+.guest-box {
+  display: flex;
+  flex: 1;
+  max-width: 400px;
+  margin-right: 15px;
+}
+
+.guest-box input[type="number"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  margin-right: 5px;
+}
+
+.submit-box {
+  flex: 1;
+  margin-left: 20px;
+  max-width: 400px;
+}
+
+.submit-box .btnReserva {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #6c5ce7;
+  color: #ffffff;
+  border: none;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-box .btnReserva:hover {
+  background-color: #4834d4;
+}
+
+.submit-box .btnBuscar {
+  width: 70%;
+  padding: 12px;
+  font-size: 20px;
+  text-align: center;
+  background-color: #6c5ce7;
+  color: #ffffff;
+  border: none;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-box .btnBuscar:hover {
+  background-color: #4834d4;
+}
+
+/* .buscador{
     position: relative;
 } */
 .navbar-nav {
@@ -181,121 +184,240 @@ body {
   flex-grow: 1;
 }
 
-.inicioSesion{
-  margin-left: 65%;
+.inicioSesion {
+  margin-left: 66%;
   margin-top: 0.001%;
 }
-.registro{
+
+.registro {
   margin-left: 0.5%;
 }
 
 /* LOGIN */
+.bgLogin {
+  background-image: url("https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 #contenedor {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 #central {
-    max-width: 320px;
-    width: 100%;
+  background-color: black;
+  color: white;
+  max-width: 450px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+  border: solid;
 }
 
 .titulo {
-    font-size: 250%;
-    color:#bbe1fa;
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 250%;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 40px;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 40px;
+}
+
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
 }
 
 #login {
-    width: 100%;
-    padding: 50px 30px;
-    background-color: #3282b8;
-    
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
-    
-    box-sizing: border-box;
+  width: 100%;
+  padding: 50px 30px;
+  background-color: black;
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  box-sizing: border-box;
 }
 
 #login input {
-    font-family: 'Overpass', sans-serif;
-    font-size: 110%;
-    color: #1b262c;
-    
-    display: block;
-    width: 100%;
-    height: 40px;
-    
-    margin-bottom: 10px;
-    padding: 5px 5px 5px 10px;
-    
-    box-sizing: border-box;
-    
-    border: none;
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
+  font-family: 'Overpass', sans-serif;
+  font-size: 110%;
+  color: #ffffff;
+  background-color: #000000;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 5px 5px 5px 10px;
+  box-sizing: border-box;
+  border: 2px solid white;
+  border-radius: 15px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
 }
 
 #login input::placeholder {
-    font-family: 'Overpass', sans-serif;
-    color: #E4E4E4;
+  font-family: 'Overpass', sans-serif;
+  color: #E4E4E4;
 }
 
 #login button {
-    font-family: 'Overpass', sans-serif;
-    font-size: 110%;
-    color:#1b262c;
-    width: 100%;
-    height: 40px;
-    border: none;
-    
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
-    
-    background-color: #bbe1fa;
-    
-    margin-top: 10px;
+  font-family: 'Overpass', sans-serif;
+  font-size: 110%;
+  color: #1b262c;
+  width: 100%;
+  height: 40px;
+  border: none;
+  transition: all 0.5s;
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 15px;
+  margin-top: 10px;
 }
 
 #login button:hover {
-    background-color: #0f4c75;
-    color:#bbe1fa;
+  background-color: #000000;
+  color: white;
 }
 
 /* BUSCADOR HOTELES */
 #buscadorHoteles {
-	background-color: white;
-	border-radius: 10px;
-	border: 1px solid rgb(0, 0, 0);
-	color: black;
-	font-size: 1.2rem;
-	outline: none;
-	padding: 15px 15px;
-	width: 98%;
-	margin-top: 20px;
-	margin-left: 5px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  color: black;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 15px 15px;
+  width: 98%;
+  margin-top: 20px;
+  margin-left: 5px;
 }
 
-.mapa{
-	height: 90%;
+.mapa {
+  height: 90%;
 }
 
 a {
   text-decoration: none;
+}
+
+.formReserva {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formReserva>div {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.formReserva>div:last-child {
+  margin-right: 0;
+}
+
+.formReserva label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.formReserva input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.formReserva button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #003580;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.formReserva button:hover {
+  background-color: #002855;
+}
+
+.formReserva2 button {
+  display: block;
+  width: 100%;
+  margin-right: 300px;
+  padding: 20px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.331);
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #003580;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+
+.formReserva2 button:hover {
+  background-color: #002855;
+}
+
+.formReserva2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.reservacionTitulo {
+  text-align: center;
+  font-size: 30px;
+
+}
+
+.tituloReserva {
+  text-align: center;
+  font-size: 40px;
 }

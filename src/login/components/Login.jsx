@@ -27,15 +27,15 @@ export const Login = () => {
 
   return (
     <>
-    <div id="contenedor">
+    <div id="contenedor" className="bgLogin raleway">
     <div id="central">
         <div id="login">
-            <div class="titulo">
+            <div className="titulo">
                 Bienvenido
             </div>
     <form className="formLogin" onSubmit={handleSubmit}>
       <div className="mb-3">
-        <label htmlFor="correo" className="form-label text-black">
+        <label htmlFor="correo" className="form-label text-white">
           Correo electrónico:
         </label>
         <input
@@ -48,7 +48,7 @@ export const Login = () => {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="password" className="form-label text-black">
+        <label htmlFor="password" className="form-label text-white">
           Contraseña:
         </label>
         <input

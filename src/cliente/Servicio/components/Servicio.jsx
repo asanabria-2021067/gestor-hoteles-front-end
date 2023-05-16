@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { apiServicios } from "../api/apiServicios";
 import { useNavigate, useParams } from "react-router-dom";
+import { NavBar } from "../../Navbar-Usuario";
 
 export const Servicio = () => {
   const [listaServicios, setListaServicios] = useState([]);
@@ -19,6 +20,7 @@ export const Servicio = () => {
 
   return (
     <>
+    <NavBar/>
       <div className="container">
         <h1 className="h1">Lista de servicios:</h1>
         {listaServicios.map((s) => {

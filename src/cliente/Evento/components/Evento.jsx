@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiEventos } from "../api/apiEventos";
+import { NavBar } from "../../Navbar-Usuario";
 
 export const Evento = () => {
   const [listaEventos, setListaEventos] = useState([]);
@@ -20,6 +21,7 @@ export const Evento = () => {
 
   return (
     <>
+    <NavBar/>
       <div className="container">
         <h1 className="h1">Lista de Eventos:</h1>
         {listaEventos.map((s) => {

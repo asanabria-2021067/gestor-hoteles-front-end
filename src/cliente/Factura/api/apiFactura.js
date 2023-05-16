@@ -1,0 +1,18 @@
+import axios from "axios";
+import Swal from "sweetalert2";
+
+const token = localStorage.getItem('token');
+const URL = 'http://localhost:8080/api/facturas/';
+
+
+
+export const addFactura = async() => {
+    try {
+        console.log(token)
+        const factura = await axios.post(`${URL}agregar` ,null, { headers: { "x-token": token } });
+        console.log("AAA", factura.data)
+        return factura.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
