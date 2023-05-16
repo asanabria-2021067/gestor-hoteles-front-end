@@ -11,7 +11,7 @@ export const Buscador = () => {
     e.preventDefault();
     const results = await apiHoteles(hotel);
     setResultado(results);
-  };
+};
 
   return (
     <>

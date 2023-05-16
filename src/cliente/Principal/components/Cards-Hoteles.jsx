@@ -3,7 +3,6 @@ import { Mapa } from "./Mapa";
 import { useNavigate } from "react-router-dom";
 
 export const Cards = ({hotel}) => {
-  const [mapInstance, setMapInstance] = useState(null);
   const navigate = useNavigate();
   return (
     <>
@@ -42,7 +41,7 @@ export const Cards = ({hotel}) => {
           )}
           </div>
           <div className="mapa col-md-5 mt-2">
-          <Mapa hotel={hotel} mapInstance={mapInstance} setMapInstance={setMapInstance} />
+          <Mapa hotel={hotel} />
           </div>
           </div>
      </div>
