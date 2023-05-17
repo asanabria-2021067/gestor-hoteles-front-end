@@ -24,9 +24,9 @@ export const sendData = async (state, option, id) => {
           confirmButtonText: "Ok",
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = "/";
+            window.location.href = "/listaEventosAdmin";
           } else {
-            window.location.href = "/";
+            window.location.href = "/listaEventosAdmin";
           }
         });
       }

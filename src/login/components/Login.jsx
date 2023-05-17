@@ -10,6 +10,7 @@ export const Login = () => {
     event.preventDefault();
     const result = await apiLogin(correo, password);
     if (result) {
+      console.log(result.split('.'));
       Swal.fire({
         icon: "success",
         title: "Genial!",
@@ -17,25 +18,36 @@ export const Login = () => {
         confirmButtonText: "Ok",
       }).then((r) => {
         if (result) {
-          window.location.href = "/hoteles";
-        } else {
-          window.location.href = "/";
+          if (r.isConfirmed) {
+            const [header, payload, signature] = result.split('.');
+            const decodedPayload = JSON.parse(atob(payload));
+            console.log(decodedPayload)
+            const rolUsuario = decodedPayload.rol;
+            console.log(rolUsuario);
+          if (rolUsuario == "ROL_SUPERADMIN") {
+            window.location.href = "/listaHabitacionesAdmin";
+          } else if (rolUsuario == "ROL_ADMINISTRADOR") {
+            window.location.href = "/hoteles";
+          } else {
+            window.location.href = "/hoteles";
+          }
         }
+      }
       });
     }
   };
 
   return (
     <>
-    <div id="contenedor">
+    <div id="contenedor" className="bgLogin raleway">
     <div id="central">
         <div id="login">
-            <div class="titulo">
+            <div className="titulo">
                 Bienvenido
             </div>
     <form className="formLogin" onSubmit={handleSubmit}>
       <div className="mb-3">
-        <label htmlFor="correo" className="form-label text-black">
+        <label htmlFor="correo" className="form-label text-white">
           Correo electrónico:
         </label>
         <input
@@ -48,7 +60,7 @@ export const Login = () => {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="password" className="form-label text-black">
+        <label htmlFor="password" className="form-label text-white">
           Contraseña:
         </label>
         <input

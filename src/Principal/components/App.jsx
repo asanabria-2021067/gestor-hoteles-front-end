@@ -7,11 +7,12 @@ import { Footer } from './Footer'
 
 export const App = () => {
   return (
-    <>  
+    <>
         <NavBar></NavBar>
         <Slide></Slide>
         <Tendencia></Tendencia>
         <Presentacion></Presentacion>
+        <Footer></Footer>
     </>
   );
 }

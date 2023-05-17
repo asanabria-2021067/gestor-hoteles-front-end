@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import img from '../img/de-viaje.png';
 export const NavBar = () => {
     const location = useLocation();
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export const NavBar = () => {
               >
                 <a className="navbar-brand" href="#">
                   <img
-                    src="src\assets\de-viaje.png"
+                    src={img}
                     alt="HotelSelecto"
                     width="30"
                     height="24"
@@ -38,17 +38,44 @@ export const NavBar = () => {
                 </a>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">
+                  <a
+                      className="nav-link active"
+                      href="/hoteles"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/hoteles");
+                      }}
+                    >
                       Inicio
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" href="#">
-                      Mi reservacion
+                  <a
+                      className="nav-link active"
+                      href="/reservacion"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/reservacion");
+                      }}
+                    >
+                      Reservacion
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active">Ofertas</a>
+                    <a className="nav-link active"  
+                    href="/miPerfil"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/miPerfil");
+                      }}>Mi Perfil</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link active"  
+                    href="/historialReservacion"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/historialReservacion");
+                      }}>Reservaciones</a>
                   </li>
                   <li className="inicioSesion">
                     <a

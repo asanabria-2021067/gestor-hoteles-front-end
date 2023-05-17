@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 import { UpdateHotel } from './UpdateHotel';
 import { hotel } from '../models/hotel';
 
-export const ListaHoteles = () => {
+export const ListaHoteles = () => {4
+    
     const [listaHotelesA, setListalistaHotelesA] = useState([]);
     console.log(listaHotelesA);
     const [showModal, setShowModal] = useState(false);

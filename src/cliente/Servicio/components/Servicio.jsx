@@ -2,10 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { apiServicios } from "../api/apiServicios";
 import { useNavigate, useParams } from "react-router-dom";
+import { NavBar } from "../../Navbar-Usuario";
 
 export const Servicio = () => {
   const [listaServicios, setListaServicios] = useState([]);
-  console.log(listaServicios)
+  console.log(listaServicios);
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const viewServicios = async () => {
     const getlistaServiciosFromApi = await apiServicios();
@@ -18,6 +20,7 @@ export const Servicio = () => {
 
   return (
     <>
+      <NavBar />
       <div className="container">
         <h1 className="h1">Lista de servicios:</h1>
         {listaServicios.map((s) => {
@@ -26,9 +29,10 @@ export const Servicio = () => {
               <div className="row g-0">
                 <div className="col-md-4">
                   <a
-                    href="/servicioPorId"
+                    href={`/servicioId?id=${s._id}`}
                     onClick={(event) => {
                       event.preventDefault();
+                      navigate(`/servicioId/${s._id}`);
                     }}
                   >
                     <img
@@ -47,13 +51,27 @@ export const Servicio = () => {
                     <span type="button" className="btn btn-success">
                       Precio: Q.{s.precio}
                     </span>
-                    <a className="btn btn-warning ms-1"> Reservar </a>
+                    <a className="btn btn-warning ms-1" href={`/servicioId?id=${s._id}`}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate(`/servicioId/${s._id}`);
+                      }}> Reservar </a>
                   </div>
                 </div>
               </div>
             </div>
           );
         })}
+        <button
+          id="btnOpciones"
+          className="btn btn-primary"
+          onClick={(event) => {
+            event.preventDefault();
+            navigate(`/eventos`);
+          }}
+        >
+          Eventos
+        </button>
       </div>
       <br />
     </>

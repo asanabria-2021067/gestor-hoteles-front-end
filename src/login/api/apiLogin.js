@@ -7,13 +7,8 @@ export const apiLogin = async (correo, password) => {
             correo,
             password
         });
-
-        
-
         const token = response.data.token;
-
         (token) ? localStorage.setItem("token", token) : null;
-        
         return token;
 
     } catch ({response: {data: {message}}}) {
