@@ -5,7 +5,7 @@ export const Principal = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+    <div className="container d-flex justify-content-center align-items-center" style={{ height: "200vh" }}>
       <div className="row">
         <div className="col-md-6">
           <div className="card text-center" style={{ borderRadius: "30px", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.60)", height: "600px", width: "400px" }}>

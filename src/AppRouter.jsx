@@ -285,7 +285,7 @@ export const AppRouter = () => {
         ></Route>
 
         <Route
-          path="/listaReservaciones"
+          path="/reservacionesHotel/:id"
           element={
             isAdmin() ? (
               <ListaReservaciones></ListaReservaciones>

@@ -65,14 +65,6 @@ export const NavBar = () => {
                         navigate("/buscadorUsuarios");
                       }}>Buscador</a>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link active"  
-                    href="/listaReservaciones"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        navigate("/listaReservaciones");
-                      }}>Reservaciones</a>
-                  </li>
                   <li className="inicioSesion">
                     <a
                       className="nav-link active"

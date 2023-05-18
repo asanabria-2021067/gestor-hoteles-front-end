@@ -5,16 +5,17 @@ import { apiReserva } from "../api/apiReservacion";
 import { addFacturaById } from "../../../cliente/Factura/api/apiFactura";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { useParams } from "react-router-dom";
 
 export const ListaReservaciones = () => {
   const [listaReservas, setListaRes] = useState([]);
-  const [habitaciones, setHabitaciones] = useState([]);
+  console.log(listaReservas);
   const [showModal, setShowModal] = useState(false);
-
+  const { id } = useParams();
+  console.log(id);
   const viewReservas = async () => {
-    const setListaReservas = await apiReserva();
+    const setListaReservas = await apiReserva(id);
     setListaRes(setListaReservas);
-    setHabitaciones(setListaReservas);
   };
 
   useEffect(() => {
@@ -75,7 +76,11 @@ export const ListaReservaciones = () => {
     currentY += lineHeight;
 
     // Cantidad de personas
-    addStyledText(`Cantidad de personas: ${e.cantidadPersonas}`, margin, currentY);
+    addStyledText(
+      `Cantidad de personas: ${e.cantidadPersonas}`,
+      margin,
+      currentY
+    );
     currentY += lineHeight;
 
     // Cuenta
@@ -142,7 +147,7 @@ export const ListaReservaciones = () => {
   return (
     <>
       <NavBar></NavBar>
-      <div className="container">
+      <div className="container" style={{ overflowX: "auto" }}>
         <h2>Lista de Reservas</h2>
         <button
           id="btn-agregar"
@@ -154,7 +159,7 @@ export const ListaReservaciones = () => {
         >
           Agregar
         </button>
-        <table className="table">
+        <table className="table" >
           <thead className="thead-dark">
             <tr>
               <th scope="col">ID</th>
@@ -181,17 +186,17 @@ export const ListaReservaciones = () => {
                   {e.habitaciones.length === 0 ? (
                     <td>No hay habitaciones</td>
                   ) : (
-                    e.habitaciones.map((h) => <td key={h._id}>{h.tipo}</td>)
+                    <td>{e.habitaciones.map((h) => h).join(", ")}</td>
                   )}
                   {e.servicios.length === 0 ? (
                     <td>No hay servicios</td>
                   ) : (
-                    e.servicios.map((s) => <td key={s._id}>{s.nombre}</td>)
+                    <td>{e.servicios.map((s) => s).join(", ")}</td>
                   )}
                   {e.eventos.length === 0 ? (
                     <td>No hay eventos</td>
                   ) : (
-                    e.eventos.map((ev) => <td key={ev._id}>{ev.nombre}</td>)
+                    <td>{e.eventos.map((ev) => ev).join(", ")}</td>
                   )}
                   <td>{e.total}</td>
                   <td>

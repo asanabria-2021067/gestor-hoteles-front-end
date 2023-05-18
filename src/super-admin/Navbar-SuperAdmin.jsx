@@ -57,7 +57,7 @@ export const NavBar = () => {
                         navigate("/miPerfilSuperAdmin");
                       }}>Mi Perfil</a>
                   </li>
-                  <li className="inicioSesion">
+                  <li className="inicioSesion2">
                     <a
                       className="nav-link active"
                       href="/"

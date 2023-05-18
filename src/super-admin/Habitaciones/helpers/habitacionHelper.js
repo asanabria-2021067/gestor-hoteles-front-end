@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 
 export const sendData = async (state, option, _id) => {
   let resultado;
+  console.log(state);
   switch (option) {
     case 1:
       resultado = await createHabitacion({
@@ -12,6 +13,7 @@ export const sendData = async (state, option, _id) => {
         cantidad_personas: state.habitacion.cantidad_personas,
         tipo_habitacion: state.habitacion.tipo_habitacion,
         img: state.habitacion.img,
+        hotel: state.habitacion.hotel,
       });
       if (resultado) {
         Swal.fire({
@@ -22,7 +24,7 @@ export const sendData = async (state, option, _id) => {
           confirmButtonText: "Ok",
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = "/habitaciones";
+            window.location.href = "/listaHabitacionesAdmin";
           } else {
             window.location.href = "/";
           }

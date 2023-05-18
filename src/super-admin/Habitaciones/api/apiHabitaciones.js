@@ -42,16 +42,18 @@ export const updateHabitacion = async (
   tipo_habitacion,
   img
 ) => {
+  console.log(id);
+  console.log(numero);
   try {
     const habitacionEditada = await axios.put(
       `${URL}editar/${id}`,
       {
-        numero,
-        descripcion,
-        costo,
-        cantidad_personas,
-        tipo_habitacion,
-        img,
+        numero: numero,
+        descripcion: descripcion,
+        costo: costo,
+        capacidad: cantidad_personas,
+        tipo: tipo_habitacion,
+        img: img,
       },
       { headers: { "x-token": token } }
     );
@@ -71,22 +73,23 @@ export const createHabitacion = async (
   costo,
   cantidad_personas,
   tipo_habitacion,
-  img
+  img,
+  hotel
 ) => {
-  console.log("TOKEN", token);
   try {
     const response = await axios.post(
-      `${URL}agregar`,
+      `${URL}agregarSuperAdmin`,
       {
-        numero: numero,
-        descripcion: descripcion,
-        costo: costo,
-        cantidad_personas: cantidad_personas,
-        tipo_habitacion: tipo_habitacion,
-        img: img,
-      },
-      { headers: { "x-token": token } }
+        numero: numero.numero,
+        descripcion: numero.descripcion,
+        costo: numero.costo,
+        cantidad_personas: numero.cantidad_personas,
+        tipo_habitacion: numero.tipo_habitacion,
+        img: numero.img,
+        hotel: numero.hotel
+      }
     );
+    console.log(response);
     return true;
   } catch ({ response: { data } }) {
     Swal.fire({

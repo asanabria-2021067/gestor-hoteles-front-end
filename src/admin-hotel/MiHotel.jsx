@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { apiHabitacionesIdHotel } from "../cliente/Habitacion/api/apiHabitaciones";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { apiHotelesId } from "../cliente/Principal/api/apiHoteles";
 import { NavBar } from "./Navbar-Admin";
 
 export const MiHotel = () => {
+  const navigate = useNavigate();
   const [hotel, setHotel] = useState([]);
   const [todasHabitaciones, setTodasHabitaciones] = useState([]);
   console.log(todasHabitaciones);
@@ -51,6 +52,11 @@ export const MiHotel = () => {
               <p className="hotel-description">{hotel.descripcion}</p>
             </div>
           </div>
+          <button id="btnOpciones" onClick={(event) => {
+                  event.preventDefault();
+                  navigate(`/reservacionesHotel/${hotel._id}`);
+                }}> Reservaciones del hotel </button>
+          <hr />
           <div className="row">
             <div className="services-section">
               <h3>Servicios</h3>
@@ -65,7 +71,7 @@ export const MiHotel = () => {
                 ))}
               </div>
             </div>
-
+            <hr />
             <div className="events-section">
               <h3>Eventos</h3>
               <div className="events-list">
@@ -80,7 +86,7 @@ export const MiHotel = () => {
                 ))}
               </div>
             </div>
-
+            <hr />
             <div className="rooms-section">
               <h3>Habitaciones Disponibles</h3>
               {habitacion.length === 0 ? (
@@ -99,6 +105,7 @@ export const MiHotel = () => {
                 </div>
               )}
             </div>
+            <hr />
             <div className="rooms-section">
               <h3>Habitaciones del hotel</h3>
               <div className="rooms-list">

@@ -4,5 +4,6 @@ export const habitacion = {
   costo:0,
   cantidad_personas:0,
   tipo_habitacion:"",
-  img: ""
+  img: "",
+  hotel:""
 }

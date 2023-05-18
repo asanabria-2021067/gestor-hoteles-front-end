@@ -45,13 +45,28 @@ export const Reservacion = () => {
     setTotalReserva(totalInicial);
   }, [habitaciones, servicios, eventos]);
 
-  const handleFactura = async()=>{
+  const handleFactura = async () => {
+    if (habitaciones.length === 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Debe agregar al menos una habitación antes de generar la factura.",
+      });
+      return;
+    } else {
+      const factura = await addFactura();
+      handleGenerarPDF();
+      setActualizarReserva(true);
+      limpiarReservacion();
+      navigate(`/hoteles`);
+    }
     const factura = await addFactura();
     handleGenerarPDF();
     setActualizarReserva(true);
     limpiarReservacion();
     navigate(`/hoteles`);
   }
+    
 
   const limpiarReservacion = () => {
     setReservacion([]);
@@ -203,7 +218,7 @@ export const Reservacion = () => {
         text: "No se pudo eliminar el evento!",
       });
     }
-  };
+  }
   return (
     <>
     <NavBar/>

@@ -67,7 +67,7 @@ export const NavBar = () => {
                       Hoteles
                     </a>
                   </li>
-                  <li className="inicioSesion2">
+                  <li className="inicioSesion3">
                     <a
                       className="nav-link active"
                       href="/login"

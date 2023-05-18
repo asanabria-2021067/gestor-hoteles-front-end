@@ -69,7 +69,7 @@ export const CreateHabitacion = () => {
                     </div>
 
                     <div className="form-group">
-                        <label className="text-black">Cantidad de personas</label>
+                        <label className="text-black">Capacidad</label>
                         <input
                             type="text"
                             className="form-control"
@@ -118,6 +118,24 @@ export const CreateHabitacion = () => {
                             }
                         ></input>
                     </div>
+
+                    <div className="form-group">
+                        <label className="text-black">Hotel</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="hotel"
+                            onChange={(event) =>
+                                setAgregar({
+                                    habitacion: {
+                                        ...agregar.habitacion,
+                                        hotel: event.target.value,
+                                    },
+                                })
+                            }
+                        ></input>
+                    </div>
+
 
                     <div className="container text-center">
                         <button id="btn-enviar" type="submit" className="btn">

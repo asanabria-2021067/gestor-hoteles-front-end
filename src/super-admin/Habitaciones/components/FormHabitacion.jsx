@@ -3,7 +3,7 @@ import { sendData } from "../helpers/habitacionHelper";
 
 export const FormHabitacion = (HabitacionEdit, option, _id) => {
     const [state, setState] = useState(HabitacionEdit);
-
+    console.log(HabitacionEdit)
     const handleSubmit = (event) => {
         event.preventDefault();
         sendData(state, 2, _id);
@@ -13,7 +13,7 @@ export const FormHabitacion = (HabitacionEdit, option, _id) => {
         <>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label className="text-black">Numero</label>
+                    <label className="text-black">Numero:</label>
                     <input
                         type="text"
                         className="form-control"
@@ -31,7 +31,7 @@ export const FormHabitacion = (HabitacionEdit, option, _id) => {
                 </div>
 
                 <div className="form-group">
-                    <label className="text-black">Descripcion</label>
+                    <label className="text-black">Descripcion:</label>
                     <input
                         type="text"
                         className="form-control"
@@ -49,7 +49,7 @@ export const FormHabitacion = (HabitacionEdit, option, _id) => {
                 </div>
 
                 <div className="form-group">
-                    <label className="text-black">Costo</label>
+                    <label className="text-black">Costo:</label>
                     <input
                         type="text"
                         className="form-control"
@@ -67,12 +67,12 @@ export const FormHabitacion = (HabitacionEdit, option, _id) => {
                 </div>
 
                 <div className="form-group">
-                    <label className="text-black">Cantidad de personas</label>
+                    <label className="text-black">Capacidad:</label>
                     <input
                         type="text"
                         className="form-control"
                         name="cantidad_personas"
-                        value={state.habitacion.cantidad_personas}
+                        value={state.habitacion.capacidad}
                         onChange={(event) =>
                             setState({
                                 habitacion: {
@@ -85,12 +85,12 @@ export const FormHabitacion = (HabitacionEdit, option, _id) => {
                 </div>
 
                 <div className="form-group">
-                    <label className="text-black">Tipo de habitacion</label>
+                    <label className="text-black">Tipo de habitacion:</label>
                     <input
                         type="text"
                         className="form-control"
                         name="tipo_habitacion"
-                        value={state.habitacion.tipo_habitacion}
+                        value={state.habitacion.tipo}
                         onChange={(event) =>
                             setState({
                                 habitacion: {
@@ -103,7 +103,7 @@ export const FormHabitacion = (HabitacionEdit, option, _id) => {
                 </div>
 
                 <div className="form-group">
-                    <label className="text-black">URL de imagen</label>
+                    <label className="text-black">URL de imagen:</label>
                     <input
                         type="text"
                         className="form-control"
