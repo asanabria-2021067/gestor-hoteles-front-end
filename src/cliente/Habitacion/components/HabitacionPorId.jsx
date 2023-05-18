@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { agregarHabitacion, apiHabitacionesId, editReservacion } from "../api/apiHabitaciones";
 import { NavBar } from "../../Navbar-Usuario";
+import * as yup from "yup";
+import Swal from "sweetalert2";
 
 export const HabitacionPorId = () => {
   const [habitacion, setHabitacion] = useState([]);
@@ -9,41 +11,65 @@ export const HabitacionPorId = () => {
     fechaInicio: '',
     fechaFinal: '',
     cantidadPersonas: 1,
-  })
+  });
 
-  console.log(reserva)
-  console.log(habitacion)
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
 
   const viewHabitacionesId = async () => {
-    console.log("Entre");
-    const getListaHabitacionesFromApi = await apiHabitacionesId(id);
-    setHabitacion(getListaHabitacionesFromApi);
+    try {
+      const getListaHabitacionesFromApi = await apiHabitacionesId(id);
+      setHabitacion(getListaHabitacionesFromApi);
+    } catch (error) {
+      console.error("Error al obtener los datos de la habitación:", error);
+    }
   };
-  function handleChange(event) {
+
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setReserva((prevData) => ({ ...prevData, [name]: value }));
-  }
+  };
+
   useEffect(() => {
     viewHabitacionesId();
-  }, [showModal]);
+  }, []);
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const addHabitacion = await agregarHabitacion(id);
-    const putReserva = await editReservacion({
-      fechaInicio: reserva.fechaInicio,
-      fechaFinal: reserva.fechaFinal,
-      cantidadPersonas: reserva.cantidadPersonas
-    })
-    navigate(`/servicios`);
+
+    try {
+      await reservaSchema.validate(reserva, { abortEarly: false });
+      await agregarHabitacion(id);
+      await editReservacion({
+        fechaInicio: reserva.fechaInicio,
+        fechaFinal: reserva.fechaFinal,
+        cantidadPersonas: reserva.cantidadPersonas
+      });
+      navigate(`/servicios`);
+    } catch (error) {
+      let mensaje = "Por favor, complete todos los campos.";
+
+      if (error.name === "ValidationError") {
+        mensaje = error.errors[0];
+      }
+
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: mensaje,
+      });
+    }
   };
+
+  const reservaSchema = yup.object().shape({
+    fechaInicio: yup.string().required("Ingrese la fecha de inicio."),
+    fechaFinal: yup.string().required("Ingrese la fecha final."),
+    cantidadPersonas: yup.number().required("Ingrese la cantidad de personas."),
+  });
 
   return (
     <>
-        <NavBar/>
+      <NavBar />
       <div className="container">
         <div className="row">
           <div className="card col-6 mb-3 mt-5">
@@ -65,7 +91,7 @@ export const HabitacionPorId = () => {
                   </p>
                   <p>{habitacion.descripcion}</p>
                   <p>Capacidad: {habitacion.capacidad}</p>
-                  <p>Hotel:  {habitacion.hotel ? habitacion.hotel.nombre : 'Sin nombre'}</p>
+                  <p>Hotel: {habitacion.hotel ? habitacion.hotel.nombre : 'Sin nombre'}</p>
                   <span type="button" className="btn btn-success">
                     Precio: Q.{habitacion.costo}
                   </span>
@@ -92,6 +118,7 @@ export const HabitacionPorId = () => {
                   value={reserva.fechaFinal}
                   name="fechaFinal"
                   id="fechaFinal"
+                  min={reserva.fechaInicio}
                   onChange={handleChange}
                 />
               </div>

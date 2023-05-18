@@ -22,7 +22,8 @@ export const sendData = async (state, option, id) => {
         nombre: state.profile.nombre,
         correo: state.profile.correo,
         identificacion: state.profile.identificacion,
-        edad: state.profile.edad
+        edad: state.profile.edad,
+        img: state.profile.img
       });
       if (resultado) {
         Swal.fire({

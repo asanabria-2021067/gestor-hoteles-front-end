@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DeleteHoteles, apiHoteles } from "../api/apiHoteles";
-import { NavBar } from "../../../Principal/components/NavBar";
+import { NavBar } from "../../Navbar-SuperAdmin";
 import { Footer } from "../../../Principal/components/Footer";
 import Swal from "sweetalert2";
 import { CanvaOpciones } from "../../CanvaOpciones";
@@ -113,6 +113,16 @@ export const ListaHoteles = () => {
             })}
           </tbody>
         </table>
+        <button
+          id="btn-agregar"
+          className="btn btn-primary"
+          onClick={(event) => {
+            event.preventDefault();
+            navigate("/estadisticasHotel");
+          }}
+        >
+          Estadisticas Hoteles
+        </button>
         <UpdateHotel
           hotelEdit={hoteles}
           isOpen={showModal}

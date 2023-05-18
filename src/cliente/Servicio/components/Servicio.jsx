@@ -45,7 +45,7 @@ export const Servicio = () => {
                 <div className="col-md-8">
                   <div className="card-body">
                     <h5 className="card-title">
-                      Numero de habitacion: {s.nombre}
+                      Nombre del Servicio: {s.nombre}
                     </h5>
                     <p>{s.descripcion}</p>
                     <span type="button" className="btn btn-success">
@@ -63,7 +63,7 @@ export const Servicio = () => {
           );
         })}
         <a
-          className="btnReservar"
+          id="btnOpciones"
           href="/eventos"
           onClick={(event) => {
             event.preventDefault();

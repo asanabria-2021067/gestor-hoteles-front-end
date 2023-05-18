@@ -56,7 +56,7 @@ export const ServicioId = () => {
         <div className="search-container col-6">
           <form className="formReserva2" onSubmit={handleSearch}>
             <div className="submit-box">
-              <button
+              <button 
                 type="submit"
               >
                 Reservar

@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { apiUsuarios } from "../api/apiUsuarios";
 import { Footer } from "../../../Principal/components/Footer";
-import { NavBar } from "../../../Principal/components/NavBar";
+import { NavBar } from "../../Navbar-SuperAdmin";
 import { CanvaOpciones } from "../../CanvaOpciones";
+import { UpdateUsuario } from "./UpdateUsuario";
+import { usuario } from "../models/usuario";
+import { useNavigate } from "react-router-dom";
 
 export const ListaUsuarios = () => {
   const [listaUsuariosA, setListaUsuariosA] = useState([]);
   console.log(listaUsuariosA);
+  const navigate = useNavigate();
+  const [usuarios, setUsuarios] = useState(usuario);
   const [showModal, setShowModal] = useState(false);
 
   const viewUsuariosList = async () => {
     const getListUsuariosFromApi = await apiUsuarios();
     setListaUsuariosA(getListUsuariosFromApi);
+  };
+
+  const handleOpenModal = (u) => {
+    setShowModal(true);
+    setUsuarios(u);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   useEffect(() => {
@@ -22,8 +36,18 @@ export const ListaUsuarios = () => {
     <>
       <NavBar></NavBar>
       <div className="container">
-        <h2>Lista de Usuarios</h2>
         <CanvaOpciones></CanvaOpciones>
+        <h2>Lista de Usuarios</h2>
+        <button
+          id="btn-agregar"
+          className="btn btn-primary"
+          onClick={(event) => {
+            event.preventDefault();
+            navigate("/agregarUsuariosAdmin");
+          }}
+        >
+          Agregar
+        </button>
         <table className="table">
           <thead className="thead-dark">
             <tr>
@@ -68,11 +92,11 @@ export const ListaUsuarios = () => {
             })}
           </tbody>
         </table>
-        <UpdateEvento
-          eventoEdit={eventos}
+        <UpdateUsuario
+          usuarioEdit={usuarios}
           isOpen={showModal}
           onClose={() => handleCloseModal()}
-        ></UpdateEvento>
+        ></UpdateUsuario>
       </div>
       <Footer></Footer>
     </>

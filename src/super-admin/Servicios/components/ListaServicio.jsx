@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DeleteServicio, apiServicio } from "../api/apiServicio";
-import { NavBar } from "../../../Principal/components/NavBar";
+import { NavBar } from "../../Navbar-SuperAdmin";
 import { Footer } from "../../../Principal/components/Footer";
 import { CanvaOpciones } from "../../CanvaOpciones";
 import { Link, useNavigate } from "react-router-dom";

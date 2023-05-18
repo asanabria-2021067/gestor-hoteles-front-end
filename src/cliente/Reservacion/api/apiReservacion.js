@@ -11,7 +11,11 @@ export const apiReservacion = async() => {
         console.log(token)
         const reservacion = await axios.get(`${URL}miReservacion` , { headers: { "x-token": token } });
         console.log("AAA", reservacion.data)
+        if(reservacion){
         return reservacion.data;
+    }else{
+        return "Sin historial"
+    }
     } catch (error) {
         console.log(error)
     }

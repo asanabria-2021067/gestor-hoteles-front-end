@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { sendData } from '../helpers/formServicioHelper';
 import { servicio } from '../models/servicio';
-import { NavBar } from '../../../Principal/components/NavBar';
+import { NavBar } from '../../Navbar-SuperAdmin';
 import { Footer } from '../../../Principal/components/Footer';
 
 export const CreateServicio = () => {

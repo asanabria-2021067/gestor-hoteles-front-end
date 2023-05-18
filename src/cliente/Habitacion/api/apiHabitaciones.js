@@ -20,6 +20,14 @@ export const apiHabitacionesId = async (id) => {
   } catch (error) {}
 };
 
+export const apiHabitacionesIdHotel = async (id) => {
+  try {
+    const habitacionId = await axios.get(`${URL}mostrar/${id}`);
+    console.log( "HABITACION ID", habitacionId.data)
+    return habitacionId.data;
+  } catch (error) {}
+};
+
 export const agregarHabitacion = async (id) => {
   try{
     console.log( "AGREGAR")

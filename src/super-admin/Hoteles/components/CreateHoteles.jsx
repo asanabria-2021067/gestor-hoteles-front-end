@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { sendData } from '../helpers/formHotelHelper';
-import { NavBar } from '../../../Principal/components/NavBar';
+import { NavBar } from '../../Navbar-SuperAdmin';
 import { Footer } from '../../../Principal/components/Footer';
 import { hotel } from '../models/hotel';
 

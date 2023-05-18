@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { apiHoteles } from "../../cliente/Principal/api/apiHoteles";
+import img from '../../img/de-viaje.png';
 export const NavBar = () => {
-    const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+  const location = useLocation();
   const navigate = useNavigate();
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    navigate(`/hotelesBuscador/${searchQuery}`)
+  }
   return (
     <>
       <header>
@@ -30,7 +36,7 @@ export const NavBar = () => {
               >
                 <a className="navbar-brand" href="#">
                   <img
-                    src="src/img/de-viaje.png"
+                    src={img}
                     alt="HotelSelecto"
                     width="30"
                     height="24"
@@ -38,7 +44,7 @@ export const NavBar = () => {
                 </a>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                  <a
+                    <a
                       className="nav-link active"
                       href="/"
                       onClick={(event) => {
@@ -61,10 +67,7 @@ export const NavBar = () => {
                       Hoteles
                     </a>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link active">Ofertas</a>
-                  </li>
-                  <li className="inicioSesion">
+                  <li className="inicioSesion2">
                     <a
                       className="nav-link active"
                       href="/login"
@@ -76,10 +79,26 @@ export const NavBar = () => {
                       Iniciar Sesion
                     </a>
                   </li>
-                  <li className="registro">
-                    <a className="nav-link active">Registrarse</a>
+                  <li className="registro2">
+                    <a className="nav-link active" href="/registro"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigate("/registro");
+                      }}>Registrarse</a>
                   </li>
                 </ul>
+                <form className="d-flex" role="search" onSubmit={handleSearch}>
+                  <input
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Buscar"
+                    aria-label="Search"
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  <button className="btn btn-outline-success" type="submit">
+                    Buscar
+                  </button>
+                </form>
               </div>
             </div>
           </nav>
@@ -88,4 +107,4 @@ export const NavBar = () => {
       <br />
     </>
   );
-};
+}

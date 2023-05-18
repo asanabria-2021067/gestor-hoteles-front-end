@@ -1,43 +1,50 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { apiHotelesGrupal } from '../../cliente/Principal/api/apiHoteles';
-import { useParams } from 'react-router-dom';
+import { NavBar } from './NavBar';
+import { Footer } from './Footer';
 
 export const Hoteles = () => {
-    const [listaHoteles, setListaHoteles] = useState([]);
-    console.log(listaHoteles);
-    const [showModal, setShowModal] = useState(false);
-    
-    const viewHotelesList = async () => {
-        const getListaHotelesList = await apiHotelesGrupal();
-        setListaHoteles(getListaHotelesList);
-    };
+  const [listaHoteles, setListaHoteles] = useState([]);
 
-    useEffect(() => {
-        viewHotelesList();
-    }, [showModal]);
+  const viewHotelesList = async () => {
+    const getListaHotelesList = await apiHotelesGrupal();
+    setListaHoteles(getListaHotelesList);
+  };
 
-    return (
-        <>
-            <div className='container'>
-                <h1>Encuentra el mejor hotel para ti.</h1>
-                <br />
-                <div className="row">
-  {listaHoteles.map((h) => {
-    return (
-      <div className="col-3" key={h._id}>
-        <div id='hotel-card' className="card bg-dark text-white">
-          <img id='img-hotel' src={h.img} className="card-img" alt="..." />
-          <div className="card-img-overlay">
-            <h5 className="card-title">{h.nombre}</h5>
-            <p className="card-text">{h.pais}</p>
-            <p className="card-text">{h.direccion}</p>
+  useEffect(() => {
+    viewHotelesList();
+  }, []);
+
+  return (
+    <>
+      <NavBar />
+      <div className='container'>
+        <h1>Encuentra el mejor hotel para ti.</h1>
+        <br />
+        <div className="row">
+        <div className="col-md-7" >
+          {listaHoteles.map((h) => (
+              <div key={h._id} className="card mb-3 mt-4">
+                <div className="row g-0">
+                  <div className="col-md-4">
+                    <img src={h.img} alt={h.nombre} className="img-fluid" />
+                  </div>
+                  <div className="col-md-8">
+                    <div className="card-body">
+                      <h5 className="card-title">Hotel: {h.nombre}</h5>
+                      <p className="card-text">Pais: {h.pais}</p>
+                      <p className="card-text">Direccion: {h.direccion}</p>
+                      <p className="card-text">Calificacion: {h.calificacion}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          ))}
           </div>
         </div>
       </div>
-    )
-  })}
-</div>
-            </div>
-        </>
-    )
-}
+      <Footer />
+    </>
+  );
+};

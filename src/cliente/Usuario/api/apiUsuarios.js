@@ -27,7 +27,8 @@ export const updateProfile = async(id, nombre, correo, identificacion, edad) => 
         nombre: nombre.nombre,
         correo: nombre.correo,
         identificacion: nombre.identificacion,
-        edad: nombre.edad
+        edad: nombre.edad,
+        img: nombre.img
       }, {headers: {'x-token': token}});
       console.log(listaUsuarios.data.msg);
       return listaUsuarios.data;

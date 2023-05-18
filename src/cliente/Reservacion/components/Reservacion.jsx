@@ -13,6 +13,7 @@ export const Reservacion = () => {
   const [servicios, setServicios] = useState([]);
   const [usuario, setUsuario] = useState({});
   const [totalReserva, setTotalReserva] = useState(0);
+  const [actualizarReserva, setActualizarReserva] = useState(false);
   const navigate = useNavigate();
 
   const viewReservacion = async () => {
@@ -27,6 +28,7 @@ export const Reservacion = () => {
   useEffect(() => {
     viewReservacion();
   }, []);
+
 
   useEffect(() => {
     let totalInicial = 0;
@@ -46,7 +48,18 @@ export const Reservacion = () => {
   const handleFactura = async()=>{
     const factura = await addFactura();
     handleGenerarPDF();
+    setActualizarReserva(true);
+    limpiarReservacion();
     navigate(`/hoteles`);
+  }
+
+  const limpiarReservacion = () => {
+    setReservacion([]);
+    setEventos([]);
+    setHabitaciones([]);
+    setServicios([]);
+    setUsuario({});
+    setTotalReserva(0);
   }
 
   const handleGenerarPDF = () => {
@@ -335,9 +348,9 @@ export const Reservacion = () => {
                 </button>
                 <button
                   className="btn btn-danger ms-2"
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/hoteles")}
                 >
-                  Cancelar
+                  Seguir Reservando
                 </button>
               </div>
               

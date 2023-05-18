@@ -73,6 +73,21 @@ console.log(state);
           }
         ></input>
       </div>
+      <div className="form-group">
+        <label className="text-black">Imagen</label>
+        <input
+          className="form-control"
+          name="edad"
+          value={state.profile.img}
+          onChange={(event) =>
+            setState({
+                profile:{
+                ...state.profile,
+                img: event.target.value,
+            }})
+          }
+        ></input>
+      </div>
       <div className="container text-center">
         <button id="btn-enviar" type="submit" className="btn">
           Enviar

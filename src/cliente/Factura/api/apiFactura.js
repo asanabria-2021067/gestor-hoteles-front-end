@@ -16,3 +16,14 @@ export const addFactura = async() => {
         console.log(error)
     }
 }
+
+export const addFacturaById = async(id) => {
+    try {
+        console.log(token)
+        const factura = await axios.post(`${URL}agregar/${id}`);
+        console.log("AAA", factura.data)
+        return factura.data;
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -61,7 +61,7 @@ export const Evento = () => {
           );
         })}
         <a
-          className="btnReservar"
+          id="btnOpciones"
           href="/reservacion"
           onClick={(event) => {
             event.preventDefault();
