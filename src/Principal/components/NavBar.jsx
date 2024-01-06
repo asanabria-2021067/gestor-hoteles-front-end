@@ -1,24 +1,42 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { apiHoteles } from "../../cliente/Principal/api/apiHoteles";
-import img from '../../img/de-viaje.png';
+import img from "../../img/logoBlanco.png";
+import { Button } from "@nextui-org/react";
+
+import { SearchIcon } from "./SearchIcon";
+import Swal from "sweetalert2";
 export const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const handleSearch = async (e) => {
     e.preventDefault();
-    navigate(`/hotelesBuscador/${searchQuery}`)
+    console.log(searchQuery.length);
+    if (searchQuery.length <= 3) {
+      Swal.fire({
+        icon: "warning",
+        title: "Campo vacío",
+        text: "Por favor, ingresa un término de búsqueda mayor a 3 caractéres.",
+      });
+    }else{
+    navigate(`/hotelesBuscador/${searchQuery}`);
   }
+}
   return (
     <>
       <header>
         <div>
           <nav
-            className="navbar navbar-expand-lg bg-body-tertiary"
+            className="navbar navbar-expand-lg"
+            id="navbarColor"
             data-bs-theme="dark"
+            style={{backgroundColor: "#1b3641"}}
           >
-            <div className="container-fluid">
+            <div className="container container-fluid">
+              <a className="navbar-brand" href="/">
+                <img src={img} alt="HotelSelecto" width="60" height="50" />
+              </a>
               <button
                 className="navbar-toggler"
                 type="button"
@@ -34,18 +52,10 @@ export const NavBar = () => {
                 className="collapse navbar-collapse"
                 id="navbarTogglerDemo01"
               >
-                <a className="navbar-brand" href="#">
-                  <img
-                    src={img}
-                    alt="HotelSelecto"
-                    width="30"
-                    height="24"
-                  />
-                </a>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
                     <a
-                      className="nav-link active"
+                      className="nav-link active mx-2"
                       href="/"
                       onClick={(event) => {
                         event.preventDefault();
@@ -57,7 +67,7 @@ export const NavBar = () => {
                   </li>
                   <li className="nav-item">
                     <a
-                      className="nav-link active"
+                      className="nav-link active mx-2"
                       href="/hotelesVista"
                       onClick={(event) => {
                         event.preventDefault();
@@ -67,44 +77,82 @@ export const NavBar = () => {
                       Hoteles
                     </a>
                   </li>
-                  <li className="inicioSesion3">
-                    <a
-                      className="nav-link active"
-                      href="/login"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        navigate("/login");
-                      }}
+
+                  <div className="ms-1 container-fluid" id="buscador">
+                    <form
+                      className="d-flex"
+                      role="search"
+                      onSubmit={handleSearch}
                     >
-                      Iniciar Sesion
-                    </a>
-                  </li>
-                  <li className="registro2">
-                    <a className="nav-link active" href="/registro"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        navigate("/registro");
-                      }}>Registrarse</a>
-                  </li>
+                      <input
+                        className="form-control me-2"
+                        type="search"
+                        placeholder="Busca por hotel o país"
+                        aria-label="Search"
+                        style={{backgroundColor: "white", color: "black", textAlign:"center"}}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                      />
+                      <button className="btn btnBuscar2" type="submit">
+                        <SearchIcon size={16} />
+                      </button>
+                    </form>
+                  </div>
                 </ul>
-                <form className="d-flex" role="search" onSubmit={handleSearch}>
-                  <input
-                    className="form-control me-2"
-                    type="search"
-                    placeholder="Buscar"
-                    aria-label="Search"
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                  <button className="btn btn-outline-success" type="submit">
-                    Buscar
-                  </button>
-                </form>
+
+                <div className="flex flex-wrap gap-2 items-center mx-4 ms-4">
+                  <Button
+                    className="ov-btn-grow-ellipse"
+                    href="/login"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigate("/login");
+                    }}
+                  >
+                    <i className="fa fa-send ms-0 mx-1"></i>Acceder
+                  </Button>
+                  <Button
+                    className="ov-btn-grow-ellipse"
+                    href="/registro"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigate("/registro");
+                    }}
+                  >
+                    <i className="fa fa-user ms-0 mx-1"></i>Registro
+                  </Button>
+                </div>
               </div>
             </div>
           </nav>
         </div>
+        <section
+          style={{
+            background: "#265778",
+            height: "50vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "50px",
+              color: "white",
+              fontWeight: "bold",
+              textAlign: "center",
+              padding: "5vh",
+            }}
+          >
+            Encuentra tu próxima estancia <h2 className="mt-3" style={{
+              fontSize: "20px",
+              color: "#ffffff88",
+              fontWeight: "none",
+              textAlign: "center",
+            }}> Te ayudamos a reservar habitaciones, servicios y eventos</h2>
+          </h1>
+        </section>
       </header>
       <br />
     </>
   );
-}
+};

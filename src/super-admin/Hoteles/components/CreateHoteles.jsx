@@ -72,7 +72,7 @@ export const CreateHoteles = () => {
                     <div className="form-group">
                         <label className="text-black">Latitud</label>
                         <input
-                            type="number"
+                            type="text"
                             className="form-control"
                             onChange={(event) =>
                                 setAgregar({
@@ -87,7 +87,7 @@ export const CreateHoteles = () => {
                     <div className="form-group">
                         <label className="text-black">Longitud</label>
                         <input
-                            type="number"
+                            type="text"
                             className="form-control"
                             onChange={(event) =>
                                 setAgregar({

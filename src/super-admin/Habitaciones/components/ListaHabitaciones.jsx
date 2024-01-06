@@ -55,58 +55,71 @@ export const ListaHabitaciones = () => {
     <>
       <NavBar></NavBar>
       <div className="container">
-        <h2>Lista de habitaciones</h2>
         <CanvaOpciones></CanvaOpciones>
+        <h2 style={{color: 'black', fontSize: "45px", fontWeight: "bold", textAlign: "center"}}>Lista de habitaciones</h2>
+        <div className="d-flex align-items-center justify-content-center mt-3 mb-5">
         <button
           id="btn-agregar"
           className="btn btn-primary"
+          style={{width: "80%", height: "40%", fontSize: "20px", textTransform: "uppercase"}}
           onClick={(event) => {
             event.preventDefault();
             navigate("/agregarHabitacion");
           }}
         >
-          Agregar
+           <i className="fa fa-save mx-2"></i><strong>Agregar</strong>
         </button>
-        <table className="table">
+        </div>
+        <div className="table-responsive mb-5">
+        <table className="table text-center">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">Imagen</th>
               <th scope="col">Tipo</th>
               <th scope="col">Numero</th>
               <th scope="col">Costo</th>
               <th scope="col">Capacidad</th>
-              <th scope="col">descripcion</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Hotel</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
             {listaHabitacionesA.map((h) => {
               return (
                 <tr key={h._id}>
-                  <th scope="row">{h._id}</th>
+                  <th><img
+                        src={h.img}
+                        alt={h.nombre}
+                        style={{
+                          borderRadius: "10%",
+                          width: "100px",
+                          height: "auto",
+                        }}
+                      /></th>
 
                   <td>{h.tipo}</td>
                   <td>{h.numero}</td>
-                  <td>{h.costo}</td>
-                  <td>{h.capacidad}</td>
+                  <td>Q.{h.costo}</td>
+                  <td><i className="fa fa-user mx-2"></i>{h.capacidad}</td>
                   <td>{h.descripcion}</td>
+                  <td><strong>{h.hotel?.nombre}</strong></td>
                   <td>
                     <button
                       id="btn-editar"
                       className="btn btn-warning"
                       onClick={() => handleOpenModal(h)}
                     >
-                      {" "}
-                      Editar
+                      <i className="fa fa-user mx-2"></i><strong>Editar</strong>
                     </button>
                     <button
                       id="btn-eliminar"
-                      className="btn btn-danger"
+                      className="btn btn-danger mt-2"
                       onClick={() => {
                         eliminarHabitacion(h._id);
                       }}
                     >
-                      {" "}
-                      Eliminar
+                      <i className="fa fa-trash mx-2"></i><strong>Eliminar</strong>
                     </button>
                   </td>
                 </tr>
@@ -114,6 +127,7 @@ export const ListaHabitaciones = () => {
             })}
           </tbody>
         </table>
+        </div>
         <UpdateHabitacion
           habitacionEdit={habitaciones}
           isOpen={showModal}

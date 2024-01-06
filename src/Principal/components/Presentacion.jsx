@@ -1,29 +1,26 @@
-import React from 'react'
-
+import React from 'react';
+import imagenHotel from "../../img/hotel4.jpg"
 export const Presentacion = () => {
-    return (
-        <>
-        <br />
-        <div className='container'>
-        <div className="clearfix">
-                <h2>Acerca de nosotros</h2>
-                <img src="src/img/hotel4.jpg" className="col-md-6 float-md-end mb-3 ms-md-3" alt="..." />
-
-                <p>
-                    A paragraph of placeholder text. We're using it here to show the use of the clearfix className. We're adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.
-                </p>
-
-                <p>
-                    As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
-                </p>
-
-                <p>
-                    And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.
-                </p>
-            </div>
-        </div>
-        <br />
-            
-        </>
-    )
-}
+  return (
+    <>
+      <br />
+      <div style={{backgroundColor: "#1b3f57"}}>
+      <div className='container pt-3 pb-4' id='containerInfoAcerca'>
+          <h1 className="mb-3 mt-2" style={{fontSize: "45px", color: "white", fontWeight: "bold", textAlign: "center"}}>
+            ACERCA DE NOSOTROS</h1>
+          <img
+            src={imagenHotel}
+            className='col-12 col-md-6 float-md-end ms-md-3'
+            id='imgInfoAcerca'
+            alt='...'
+          />
+          <p className='col-12 mt-4 me-1' id='textInfoAcerca' style={{padding:"8vh", fontSize:"22px", color:"white", fontWeight:"lighter", textAlign: "justify"}}>
+          Descubre una variedad de hoteles en todo el mundo y reserva tu refugio ideal de manera sencilla. Desde resorts de lujo hasta acogedores alojamientos boutique, nuestra plataforma te ofrece opciones que se ajustan a tus preferencias.
+          <p style={{fontWeight: "600"}}>¡Asegura tu estancia perfecta hoy!</p>
+          </p>
+      </div>
+      <br />
+      </div>
+    </>
+  );
+};

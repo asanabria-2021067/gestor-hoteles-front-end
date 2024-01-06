@@ -10,7 +10,6 @@ import { hotel } from "../models/hotel";
 
 export const ListaHoteles = () => {
   const [listaHotelesA, setListalistaHotelesA] = useState([]);
-  console.log(listaHotelesA);
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [hoteles, setHoteles] = useState(hotel);
@@ -55,78 +54,89 @@ export const ListaHoteles = () => {
     <>
       <NavBar></NavBar>
       <div className="container">
-        <h2>Lista de hoteles</h2>
-        <CanvaOpciones></CanvaOpciones>
+      <CanvaOpciones></CanvaOpciones>
+      <h2 style={{color: 'black', fontSize: "45px", fontWeight: "bold", textAlign: "center"}}>Lista de hoteles</h2>
+      <div className="d-flex align-items-center justify-content-center mt-3 mb-5"> 
         <button
           id="btn-agregar"
           className="btn btn-primary"
-          onClick={(event) => {
-            event.preventDefault();
-            navigate("/agregarHotelAdmin");
-          }}
+          style={{width: "80%", height: "40%", fontSize: "20px", textTransform: "uppercase"}}
+          onClick={() => navigate("/agregarHotelAdmin")}
         >
-          Agregar
+         <i className="fa fa-save mx-2"></i><strong>Agregar</strong>
         </button>
-        <table className="table">
-          <thead className="thead-dark">
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Pais</th>
-              <th scope="col">Direccion</th>
-              <th scope="col">Reservaciones</th>
-              <th scope="col">Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {listaHotelesA.map((u) => {
-              return (
-                <tr key={u._id}>
-                  <th scope="row">{u._id}</th>
+        </div>
+        <div className="table-responsive">
+          <table className="table text-center">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Pais</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Reservaciones</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {listaHotelesA.map((u) => {
+                return (
+                  <tr key={u._id}>
+                    <td>
+                      <img
+                        src={u.img}
+                        alt={u.nombre}
+                        style={{
+                          borderRadius: "10%",
+                          width: "100px",
+                          height: "auto",
+                        }}
+                      />
+                    </td>
 
-                  <td>{u.nombre}</td>
-                  <td>{u.pais}</td>
-                  <td>{u.direccion}</td>
-                  <td>{u.reservaciones}</td>
-                  <td>
-                    <button
-                      id="btn-editar"
-                      className="btn btn-warning"
-                      onClick={() => handleOpenModal(u)}
-                    >
-                      {" "}
-                      Editar
-                    </button>
-                    <button
-                      id="btn-eliminar"
-                      className="btn btn-danger"
-                      onClick={() => {
-                        eliminar(u._id);
-                      }}
-                    >
-                      {" "}
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    <td className="mt-4">
+                      <strong>{u.nombre}</strong>
+                    </td>
+                    <td>{u.pais}</td>
+                    <td>{u.direccion}</td>
+                    <td>{u.reservaciones}</td>
+                    <td>
+                      <button
+                        id="btn-editar"
+                        className="btn btn-warning"
+                        onClick={() => handleOpenModal(u)}
+                      >
+                        <i className="fa fa-user mx-2"></i><strong>Editar</strong>
+                      </button>
+                      <button
+                        id="btn-eliminar"
+                        className="btn btn-danger mt-2"
+                        onClick={() => {
+                          eliminar(u._id);
+                        }}
+                      >
+                        <i className="fa fa-trash mx-2"></i><strong>Eliminar</strong>
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div className="d-flex align-items-center justify-content-center mb-4">
         <button
-          id="btn-agregar"
           className="btn btn-primary"
-          onClick={(event) => {
-            event.preventDefault();
-            navigate("/estadisticasHotel");
-          }}
+          onClick={() => navigate("/estadisticasHotel")}
+          style={{width: "70%"}}
         >
-          Estadisticas Hoteles
+          <i className="fa fa-history mx-2"></i>Estadisticas Hoteles
         </button>
+        </div>
         <UpdateHotel
           hotelEdit={hoteles}
           isOpen={showModal}
-          onClose={() => handleCloseModal()}
+          onClose={handleCloseModal}
         ></UpdateHotel>
       </div>
       <Footer></Footer>

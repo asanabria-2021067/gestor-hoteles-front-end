@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const URL = 'http://localhost:8080/api/usuarios/';
+const URL = 'https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/usuarios/';
 
 
 export const apiRegistro = async (nombre, edad, identificacion, correo, password) => {

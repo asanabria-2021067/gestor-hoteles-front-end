@@ -1,7 +1,10 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const URL = "http://localhost:8080/api/eventos/";
+const URL = "https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/eventos/";
+
+const URL_TIPO = "https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/tipo/";
+
 
 export const apiEventos = async () => {
   try {
@@ -13,6 +16,14 @@ export const apiEventos = async () => {
     });
     console.log(listaEventos.data);
     return listaEventos.data;
+  } catch (error) {}
+};
+
+export const apiTipos = async () => {
+  try {
+    const listaTipos = await axios.get(`${URL_TIPO}mostrar`);
+    console.log(listaTipos.data.listaTipos[1]);
+    return listaTipos.data.listaTipos[1];
   } catch (error) {}
 };
 
@@ -94,6 +105,7 @@ export const createEvento = async (nombre, fechaInicio, fechaFinal, descripcion,
     );
     return true;
   } catch (error) {
+    console.log(error);
     Swal.fire({
       icon: "error",
       title: "Oops...",

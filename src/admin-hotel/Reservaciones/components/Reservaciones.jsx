@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavBar } from "../../Navbar-Admin";
 import { Footer } from "../../../Principal/components/Footer";
-import { apiReserva } from "../api/apiReservacion";
+import { apiReserva, eliminarReservaById } from "../api/apiReservacion";
 import { addFacturaById } from "../../../cliente/Factura/api/apiFactura";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -16,6 +16,16 @@ export const ListaReservaciones = () => {
   const viewReservas = async () => {
     const setListaReservas = await apiReserva(id);
     setListaRes(setListaReservas);
+  };
+
+  const handleEliminarReserva = async (id) => {
+    try {
+      await eliminarReservaById(id);
+      // Actualizar la lista de reservas después de eliminar
+      viewReservas();
+    } catch (error) {
+      console.error("Error al eliminar la reserva:", error);
+    }
   };
 
   useEffect(() => {
@@ -205,6 +215,12 @@ export const ListaReservaciones = () => {
                       onClick={() => handleFactura(e)}
                     >
                       Factura
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleEliminarReserva(e.usuario._id)}
+                    >
+                      Cancelar
                     </button>
                   </td>
                 </tr>

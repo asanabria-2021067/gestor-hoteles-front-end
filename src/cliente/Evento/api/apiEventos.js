@@ -1,8 +1,8 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 const token = localStorage.getItem("token");
-const URL = "http://localhost:8080/api/eventos/";
-const URLRESERVA = "http://localhost:8080/api/reservaciones/";
+const URL = "https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/eventos/";
+const URLRESERVA = "https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/reservaciones/";
 export const apiEventos = async () => {
   try {
     const listaEventos = await axios.get(`${URL}mostrar`);

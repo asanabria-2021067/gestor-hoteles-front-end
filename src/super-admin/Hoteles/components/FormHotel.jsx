@@ -18,6 +18,7 @@ export const FormHotel = (hotelEdit, option, id) => {
                     <label className="text-black">Nombre de Hotel</label>
                     <input
                         className="form-control"
+                        maxLength={22}
                         value={state.hotel.nombre}
                         onChange={(event) =>
                             setState({

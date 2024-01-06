@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { sendData } from "../helpers/habitacionHelper";
 import { habitacion } from "../models/habitacion";
+import { apiHotelesGrupal } from "../../../cliente/Principal/api/apiHoteles";
 
 export const CreateHabitacion = () => {
     const [agregar, setAgregar] = useState(habitacion);
+    const [hotel, setHotel] = useState([])
+    console.log(hotel);
     console.log(agregar)
     const handleSubmit = (event) => {
         event.preventDefault();
-        sendData( agregar , 1, 0);
+        sendData(agregar, 1, 0);
         // Llamar a la función enviarDatos() y pasar el estado actual como argumento
     };
+
+    const fetchHoteles = async () => {
+        const response = await apiHotelesGrupal();
+        if (response) {
+            setHotel(response);
+        }
+    };
+
+    useEffect(() => {
+        fetchHoteles()
+    }, [])
+
 
     return (
         <>
@@ -118,23 +133,49 @@ export const CreateHabitacion = () => {
                             }
                         ></input>
                     </div>
-
-                    <div className="form-group">
-                        <label className="text-black">Hotel</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="hotel"
-                            onChange={(event) =>
-                                setAgregar({
-                                    habitacion: {
-                                        ...agregar.habitacion,
-                                        hotel: event.target.value,
-                                    },
-                                })
-                            }
-                        ></input>
-                    </div>
+                    {hotel ? (
+                        <div className="form-group">
+                            <label className="text-black">Hotel</label>
+                            <select
+                                value={agregar.habitacion?.hotel}
+                                className="form-control"
+                                name="hotel"
+                                onChange={(event) =>
+                                    setAgregar({
+                                        habitacion: {
+                                            ...agregar.habitacion,
+                                            hotel: event.target.value,
+                                        },
+                                    })
+                                }
+                                style={{height:"6vh",overflow: "scroll", fontSize: "13px", fontWeight: "bold" }}
+                            >
+                                {hotel.map((h) => (
+                                    <option key={h._id} value={h._id}
+                                    >
+                                        {h.nombre}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    ) : (
+                        <div className="form-group">
+                            <label className="text-black">Hotel</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="hotel"
+                                onChange={(event) =>
+                                    setAgregar({
+                                        habitacion: {
+                                            ...agregar.habitacion,
+                                            hotel: event.target.value,
+                                        },
+                                    })
+                                }
+                            ></input>
+                        </div>
+                    )}
 
 
                     <div className="container text-center">

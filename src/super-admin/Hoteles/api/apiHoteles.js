@@ -2,7 +2,9 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const token = localStorage.getItem("token");
-const URL = "http://localhost:8080/api/hoteles/";
+const URL = "https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/hoteles/";
+const URL_LOCAL = "http://localhost:8080/api/hoteles/logout";
+
 
 export const apiHoteles = async () => {
   try {
@@ -11,6 +13,16 @@ export const apiHoteles = async () => {
     return listaHoteles.data.listaHoteles;
   } catch (error) {}
 };
+
+export const logOutHotel = async (token2) => {
+  console.log("HOOLAA");
+  try {
+    const cerrarSesion = await axios.post(`${URL_LOCAL}`,null, { headers: { "token": token2 } });
+    console.log(cerrarSesion);
+    return true
+  } catch (error) {}
+};
+
 
 export const updateHotel = async (id,
   nombre, pais, direccion, reservaciones

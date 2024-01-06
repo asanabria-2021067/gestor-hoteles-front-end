@@ -4,16 +4,28 @@ import { UpdateProfile } from "./UpdateProfile";
 import { NavBar } from "../../Navbar-Usuario";
 import { Footer } from "../../../Principal/components/Footer";
 import { Navigate, useNavigate } from "react-router-dom";
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 var tokenId = localStorage.getItem("token");
 
 export const Perfil = () => {
   const [usuario, setUsuario] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+
   console.log(usuario)
   const eliminarUser = async () => {
     await apiEliminarUsuarioById(tokenId);
     localStorage.removeItem("token");
+    localStorage.removeItem("rol");
     window.location.href = "/login";
   };
 
@@ -37,82 +49,79 @@ export const Perfil = () => {
   return (
     <>
       <NavBar></NavBar>
-      <div className="container mt-4 mb-4" style={{ borderRadius: "30px", boxShadow: "0px 20px 20px rgba(0,0,0,0.16)" }}>
-        <div className="card" style={{ borderRadius: "30px" }} >
-          <div className="section-wrapper">
-            <div className="row"></div>
-            <section id="promo" className="promo section offset-header">
-              <div className="container text-center">
-                <h2 className="title">Mi Usuario</h2>
-                <p className="intro">
-                  Aqui encontraras toda la informacion relacionada con tu usuario
-                </p>
+      <div className="container">
+          <div id="perfil" className="d-flex flex-column align-items-center mt-4">
+            <div className="tituloperfil text-right">
+              <img src={usuario.img} alt="..." className="img-fluid rounded-circle" style={{width: "100px"}} />
               </div>
-            </section>
-          </div>
-
-          <div className="container">
-            <div className="card">
-              <img
-                src={usuario.img}
-                className="avatar"
-                alt="avatar"
-              />
-              <div className="card-body">
-                <div className="details">
-                  <h3>
-                    Nombre: {usuario.nombre} <i className="fa fa-sheild"></i>
-                  </h3>
-                  <div>
-                    <strong>Correo:</strong> {usuario.correo}
-                  </div>
-
-                  <div>
-                    <strong>Identifacion:</strong> {usuario.identificacion}
-                  </div>
-
-                  <div>
-                    <strong>Edad:</strong> {usuario.edad}
-                  </div>
-                  <div className="mg-top-10">
-                    <a
-                      className="btn btn-warning"
-                      id="boton"
-                      onClick={() => handleOpenModal()}
-                    >
-                      Editar
-                    </a>
-                    <a
-                      className="btn btn-danger"
-                      id="boton"
-                      style={{ marginLeft: "10px" }}
-                      onClick={eliminarUser}
-                    >
-                      Eliminar
-                    </a>
-                    <button className="btn btn-primary"
-                      style={{ marginLeft: "10px" }}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        navigate(`/historialReservacion`);
-                      }}
-                    >
-                      Historial de reservaciones
-                    </button>
-                    <hr />
-                  </div>
-                </div>
-              </div>
+              <div className="mt-2">
+              <h1 style={{color: 'black', fontSize: "40px", fontWeight: "bold", textAlign: "center"}}>
+                {usuario.nombre} {usuario.apellido}
+              </h1>
             </div>
-          </div>
-          <UpdateProfile
+            <br />
+            <div className="infocandidato">
+              <MDBCard className="mb-3">
+                <MDBCardBody>
+                  <MDBRow>
+                    <MDBCol sm="4">
+                      <MDBCardText><strong>Nombre:</strong></MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="8">
+                      <MDBCardText className="text-muted">{usuario.nombre} {usuario.apellido}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <MDBRow>
+                    <MDBCol sm="4">
+                      <MDBCardText><strong>Correo:</strong></MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="8">
+                      <MDBCardText className="text-muted">{usuario.correo}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                  <MDBRow>
+                    <MDBCol sm="4">
+                      <MDBCardText><strong>Telefono:</strong></MDBCardText>
+                    </MDBCol>
+                    <MDBCol sm="8">
+                      <MDBCardText className="text-muted">(+502) {usuario.telefono}</MDBCardText>
+                    </MDBCol>
+                  </MDBRow>
+                </MDBCardBody>
+              </MDBCard>
+            </div>
+            <div className="mg-top-10 mb-5 d-flex align-items-center justify-content-center gap-2">
+              <a
+                className="btn btn-warning"
+                id="boton"
+                onClick={() => handleOpenModal()}
+              >
+                Editar <i className="fa fa-user mx-2"></i>
+              </a>
+              <a
+                className="btn btn-danger"
+                id="boton"
+                onClick={eliminarUser}
+              >
+                Eliminar <i className="fa fa-trash mx-2"></i>
+              </a>
+              <button className="btn btn-primary"
+                onClick={(event) => {
+                  event.preventDefault();
+                  navigate(`/historialReservacion`);
+                }}
+              >
+                Historial de reservaciones <i className="fa fa-history mx-2"></i>
+              </button>
+            </div>
+            <UpdateProfile
             profileEdit={usuario}
             isOpen={showModal}
             onClose={() => handleCloseModal()}
           ></UpdateProfile>
-        </div>
-      </div>
-      <Footer></Footer>
+</div>
+          </div>
+          <Footer></Footer>
     </>
   );
 };

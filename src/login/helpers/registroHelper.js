@@ -24,13 +24,14 @@ export const sendData = async (state, option, id) => {
           identificacion: state.usuario.identificacion,
           correo: state.usuario.correo,
           password: state.usuario.password,
+          img: state.usuario.img,
         }
         );
         if (resultado) {
           Swal.fire({
             icon: "success",
             title: "Genial!",
-            text: "usuario creado correctamente!",
+            text: "Usuario creado correctamente!",
             showConfirmButton: true,
             confirmButtonText: "Ok",
           }).then((result) => {

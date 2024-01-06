@@ -1,8 +1,8 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 const token = localStorage.getItem("token");
-const URL = "http://localhost:8080/api/habitaciones/";
-const URLRESERVA = "http://localhost:8080/api/reservaciones/";
+const URL = "https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/habitaciones/";
+const URLRESERVA = "https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/reservaciones/";
 
 
 export const apiHabitaciones = async (id) => {
@@ -41,13 +41,13 @@ export const agregarHabitacion = async (id) => {
 
 export const editReservacion = async (fechaInicio, fechaFinal, cantidadPersonas) => {
   try{
-    console.log( "AGREGAR")
+    console.log( "AGREGAR", fechaInicio)
     console.log("TOKEN", token)
     const editarReserva = await axios.post(`${URLRESERVA}editarReserva`, 
     {
-      fechaInicio: fechaInicio,
-      fechaFinal: fechaFinal,
-      cantidadPersonas: cantidadPersonas
+      fechaInicio: fechaInicio.fechaInicio,
+      fechaFinal: fechaInicio.fechaFinal,
+      cantidadPersonas: fechaInicio.cantidadPersonas
     }, { headers: { "x-token": token } });
     console.log( "editarReserva ", editarReserva)
   }catch (error) {

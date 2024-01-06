@@ -4,6 +4,7 @@ import { agregarHabitacion, apiHabitacionesId, editReservacion } from "../api/ap
 import { NavBar } from "../../Navbar-Usuario";
 import * as yup from "yup";
 import Swal from "sweetalert2";
+import { CalificacionEstrellas } from "./CalificacionEstrellas";
 
 export const HabitacionPorId = () => {
   const [habitacion, setHabitacion] = useState([]);
@@ -12,6 +13,8 @@ export const HabitacionPorId = () => {
     fechaFinal: '',
     cantidadPersonas: 1,
   });
+
+  const fechaHoy = new Date().toISOString().split("T")[0];
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -72,35 +75,40 @@ export const HabitacionPorId = () => {
       <NavBar />
       <div className="container">
         <div className="row">
-          <div className="card col-6 mb-3 mt-5">
+          <div className="card col-12 col-md-6 mb-3 mt-1" style={{width: "45%"}}>
             <div className="row g-0">
-              <div className="col-md-12">
+              <div className="col-md-12" style={{marginBottom:"-05%"}}>
                 <img
                   src={habitacion.img}
-                  className="img-fluid rounded-start"
+                  className="img-fluid"
                   alt="..."
+                  style={{ marginTop: "15px",height: "90%", width: "100%"}}
                 />
               </div>
-              <div className="col-md-7">
+              <div className="col-md-12">
                 <div className="card-body">
-                  <h5 className="card-title">
-                    Numero de habitacion: {habitacion.numero}
-                  </h5>
-                  <p className="text-danger">
-                    15% de descuento en tu primera reservacion.
-                  </p>
-                  <p>{habitacion.descripcion}</p>
-                  <p>Capacidad: {habitacion.capacidad}</p>
-                  <p>Hotel: {habitacion.hotel ? habitacion.hotel.nombre : 'Sin nombre'}</p>
-                  <span type="button" className="btn btn-success">
+                <div className="align-items-center justify-content-center">
+                      <h5 className="card-title text-center" style={{ color: 'black', fontSize: "30px", fontWeight: "bold", textAlign: "center" }} >
+                        No: {habitacion.numero}
+                      </h5>
+                      <p className="text-center mt-2"><strong>Tipo: </strong>{habitacion.tipo}</p>
+                      <p className="text-center mt-2"><strong>Descripcion: </strong>{habitacion.descripcion}</p>
+                      <div className="row">
+                      </div>
+                      <p className="mt-2 text-center"><strong>Capacidad: </strong>{habitacion.capacidad} <i className="fa fa-user mx-1"></i></p>
+                  <p className="mt-2 text-center mb-2"><strong>Hotel:</strong> {habitacion.hotel ? habitacion.hotel.nombre : 'Sin nombre'}</p>
+                      </div>
+                      <div className="d-flex align-items-center justify-content-center">
+                  <button className="btn btn-success" style={{width:"90%"}}>
                     Precio: Q.{habitacion.costo}
-                  </span>
+                  </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="search-container col-6">
-            <form className="formReserva" onSubmit={handleSearch}>
+          <div className="search-container col-12 col-md-6" style={{marginTop: "12%"}}>
+            <form className="formReserva mt-5" onSubmit={handleSearch}>
               <div>
                 <label htmlFor="fechaInicio">Entrada</label>
                 <input
@@ -108,6 +116,7 @@ export const HabitacionPorId = () => {
                   value={reserva.fechaInicio}
                   name="fechaInicio"
                   id="fechaInicio"
+                  min={fechaHoy}
                   onChange={handleChange}
                 />
               </div>
@@ -118,7 +127,7 @@ export const HabitacionPorId = () => {
                   value={reserva.fechaFinal}
                   name="fechaFinal"
                   id="fechaFinal"
-                  min={reserva.fechaInicio}
+                  min={fechaHoy && reserva.fechaInicio}
                   onChange={handleChange}
                 />
               </div>
@@ -130,7 +139,7 @@ export const HabitacionPorId = () => {
                   id="cantidadPersonas"
                   value={reserva.cantidadPersonas}
                   min="1"
-                  max="5"
+                  max={habitacion.capacidad}
                   onChange={handleChange}
                 />
               </div>

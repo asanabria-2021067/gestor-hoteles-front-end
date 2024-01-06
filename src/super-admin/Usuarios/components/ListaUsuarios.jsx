@@ -37,21 +37,25 @@ export const ListaUsuarios = () => {
       <NavBar></NavBar>
       <div className="container">
         <CanvaOpciones></CanvaOpciones>
-        <h2>Lista de Usuarios</h2>
+        <h2 style={{color: 'black', fontSize: "45px", fontWeight: "bold", textAlign: "center"}}>Lista de Usuarios</h2>
+        <div className="d-flex align-items-center justify-content-center mt-3 mb-5">
         <button
           id="btn-agregar"
           className="btn btn-primary"
+          style={{width: "80%", height: "40%", fontSize: "20px", textTransform: "uppercase"}}
           onClick={(event) => {
             event.preventDefault();
             navigate("/agregarUsuariosAdmin");
           }}
         >
-          Agregar
+          <i className="fa fa-save mx-2"></i><strong>Agregar</strong>
         </button>
-        <table className="table">
+        </div>
+        <div className="table-responsive">
+        <table className="table text-center">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">Imagen</th>
               <th scope="col">Nombre</th>
               <th scope="col">Correo</th>
               <th scope="col">Rol</th>
@@ -63,7 +67,15 @@ export const ListaUsuarios = () => {
             {listaUsuariosA.map((u) => {
               return (
                 <tr key={u._id}>
-                  <th scope="row">{u._id}</th>
+                  <th> <img
+                        src={u.img}
+                        alt={u.nombre}
+                        style={{
+                          borderRadius: "100%",
+                          width: "50px",
+                          height: "50px",
+                        }}
+                      /></th>
                   <td>{u.nombre}</td>
                   <td>{u.correo}</td>
                   <td>{u.rol}</td>
@@ -74,17 +86,16 @@ export const ListaUsuarios = () => {
                       className="btn btn-warning"
                       onClick={() => handleOpenModal(u)}
                     >
-                      Editar
+                       <i className="fa fa-user mx-2"></i><strong>Editar</strong>
                     </button>
                     <button
                       id="btn-eliminar"
-                      className="btn btn-danger"
+                      className="btn btn-danger mt-2"
                       onClick={() => {
                         eliminar(u._id);
                       }}
                     >
-                      {" "}
-                      Eliminar
+                      <i className="fa fa-trash mx-2"></i><strong>Eliminar</strong>
                     </button>
                   </td>
                 </tr>
@@ -92,6 +103,7 @@ export const ListaUsuarios = () => {
             })}
           </tbody>
         </table>
+        </div>
         <UpdateUsuario
           usuarioEdit={usuarios}
           isOpen={showModal}

@@ -1,37 +1,45 @@
-import React from 'react'
+import React from 'react';
+import img from "../../img/logoBlanco.png";
+import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
 
 export const Footer = () => {
     return (
-        <>
-            <div className="mt-5 pt-5 pb-5 footer">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-5 col-xs-12 about-company">
-                            <h2>HotelSelecto</h2>
-                            <p className="pr-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis </p>
-                        </div>
-                        <div className="col-lg-3 col-xs-12 links">
-                            <h4 className="mt-lg-0 mt-sm-3">Nuestras redes</h4>
-                            <ul className="m-0 p-0">
-                                <li>- <a href="#">Instagram</a></li>
-                                <li>- <a href="#">Facebook</a></li>
-                                <li>- <a href="#">Twitter</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-lg-4 col-xs-12 location">
-                            <h4 className="mt-lg-0 mt-sm-4">Contactanos</h4>
-                            <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
-                            <p className="mb-0"><i className="fa fa-phone mr-3"></i>(502) 2324-2890</p>
-                            <p><i className="fa fa-envelope-o mr-3"></i>info@hotelSelecto.com</p>
+        <footer className="footer py-5 d-flex" style={{backgroundColor: "#1b3641"}}>
+            <div className="container footerContainer">
+                <div className="row">
+                    <div className='col-lg-1'></div>
+                    <div className="col-lg-4 col-md-4 logoFooter">
+                        <div className="d-flex align-items-end mb-4 ms-md-0 ms-4">
+                            <img src={img} alt="Gestor Hoteles" height={140} width={120} />
                         </div>
                     </div>
-                    <div className="row mt-5">
-                        <div className="col copyright">
-                            <p className=""><small className="text-white-50">© 2023. All Rights Reserved.</small></p>
-                        </div>
+                    <div className="col-lg-4 col-md-4 mt-4">
+                        <h4 className="mb-4 text-white ms-4">Redes Sociales</h4>
+                        <ul className="list-unstyled d-flex gap-3 mb-0 mx-4">
+                            <li>
+                                <a target="_blank">
+                                    <FaInstagram  id='iconIg' size={24} color="#E1306C" /></a></li>
+                            <li>
+                                <a target="_blank">
+                                    <FaFacebook id='iconFace' size={24} color="#1877F2" /></a></li>
+                            <li>
+                                <a target="_blank">
+                                    <FaLinkedin id='iconLink' size={24} color="#0a66c2" /></a></li>
+                        </ul>
+                    </div>
+                    <div className="col-lg-3 col-md-4 mt-4 ">
+                        <h4 className="mb-4 text-white contactanos">Contáctanos</h4>
+                        <p className="mb-2"><i className="fa fa-phone me-3 text-primary"></i>(502) 2324-2890</p>
+                        <p><i className="fa fa-envelope-o me-3 text-primary"></i>info@hotelSelecto.com</p>
+                    </div>
+                </div>
+                <hr className="my-4 lineaSeparador" />
+                <div className="row textoDerechos">
+                    <div className="col text-center position:absolute">
+                        <p className="mb-0 text-white"><small>&copy; {new Date().getFullYear()} Gestor Hoteles. Todos los derechos reservados.</small></p>
                     </div>
                 </div>
             </div>
-        </>
-    )
-}
+        </footer>
+    );
+};

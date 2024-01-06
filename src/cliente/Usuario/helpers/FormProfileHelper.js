@@ -29,7 +29,7 @@ export const sendData = async (state, option, id) => {
         Swal.fire({
           icon: "success",
           title: "Genial!",
-          text: `Tarea actualizado correctamente!`,
+          text: `Usuario actualizado correctamente!`,
           confirmButtonText: true,
           confirmButtonText: "Ok",
         }).then((result) => {

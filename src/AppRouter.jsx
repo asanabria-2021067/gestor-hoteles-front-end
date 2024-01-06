@@ -38,6 +38,7 @@ import { PerfilAdmin } from "./admin-hotel/Usuarios/components/MiPerfilAdmin";
 import { PerfilSuperAdmin } from "./super-admin/Usuarios/components/MiPerfilSuperAdmin";
 import { HistorialReservacion } from "./cliente/Usuario/components/HistorialReservacion";
 import { CreateHabitacion } from "./super-admin/Habitaciones/components/AgregarHabitacion";
+import Pruebas from "./Principal/components/NavbarEjemplo";
 export const AppRouter = () => {
   const userIsSuperAdmin = isSuperAdmin();
   return (
@@ -71,7 +72,7 @@ export const AppRouter = () => {
         ></Route>
         <Route
           path="/hoteles"
-          element={isUserLogged() ? <Hotel></Hotel> : <Navigate to="/app" />}
+          element={<Hotel></Hotel>}
         ></Route>
         <Route path="/hotelesVista" element={<Hoteles></Hoteles>}></Route>
         <Route
@@ -120,7 +121,13 @@ export const AppRouter = () => {
         ></Route>
         <Route
           path="/historialReservacion"
-          element={isUserLogged() ? <HistorialReservacion></HistorialReservacion> : <Navigate to="/app" />}
+          element={
+            isUserLogged() ? (
+              <HistorialReservacion></HistorialReservacion>
+            ) : (
+              <Navigate to="/app" />
+            )
+          }
         ></Route>
 
         {/* RUTAS SUPER ADMIN */}
@@ -128,7 +135,11 @@ export const AppRouter = () => {
         <Route
           path="/miPerfilSuperAdmin"
           element={
-            isSuperAdmin() ? <PerfilSuperAdmin></PerfilSuperAdmin> : <Navigate to="/app" />
+            isSuperAdmin() ? (
+              <PerfilSuperAdmin></PerfilSuperAdmin>
+            ) : (
+              <Navigate to="/app" />
+            )
           }
         ></Route>
 
@@ -172,8 +183,10 @@ export const AppRouter = () => {
           }
         ></Route>
         <Route
-        path="/agregarHabitacion"
-        element={isSuperAdmin ? <CreateHabitacion /> : <Navigate to="/login" />}
+          path="/agregarHabitacion"
+          element={
+            isSuperAdmin ? <CreateHabitacion /> : <Navigate to="/login" />
+          }
         ></Route>
         <Route
           path="/listaEventosAdmin"
@@ -270,7 +283,9 @@ export const AppRouter = () => {
 
         <Route
           path="/miPerfilAdmin"
-          element={isAdmin() ? <PerfilAdmin></PerfilAdmin> : <Navigate to="/app" />}
+          element={
+            isAdmin() ? <PerfilAdmin></PerfilAdmin> : <Navigate to="/app" />
+          }
         ></Route>
 
         <Route
@@ -292,6 +307,13 @@ export const AppRouter = () => {
             ) : (
               <Navigate to="/app" />
             )
+          }
+        ></Route>
+
+        <Route
+          path="/prueba"
+          element={
+              <Pruebas></Pruebas>
           }
         ></Route>
       </Routes>

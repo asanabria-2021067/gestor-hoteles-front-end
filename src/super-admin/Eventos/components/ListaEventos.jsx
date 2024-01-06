@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DeleteEvento, apiEventos } from "../api/apiEventos";
 import { Footer } from "../../../Principal/components/Footer";
-import { NavBar } from "../../../Principal/components/NavBar";
+import { NavBar } from "../../Navbar-SuperAdmin";
 import { CanvaOpciones } from "../../CanvaOpciones";
 import Swal from "sweetalert2";
 import { evento } from "../models/evento";
@@ -57,21 +57,25 @@ export const ListaEventos = () => {
       <NavBar></NavBar>
       <div className="container">
         <CanvaOpciones></CanvaOpciones>
-        <h2>Lista de eventos</h2>
+        <h2 style={{color: 'black', fontSize: "45px", fontWeight: "bold", textAlign: "center"}}>Lista de eventos</h2>
+        <div className="d-flex align-items-center justify-content-center mt-3 mb-5">
         <button
           id="btn-agregar"
           className="btn btn-primary"
+          style={{width: "80%", height: "40%", fontSize: "20px", textTransform: "uppercase"}}
           onClick={(event) => {
             event.preventDefault();
             navigate("/agregarEventoAdmin");
           }}
         >
-          Agregar
+           <i className="fa fa-save mx-2"></i><strong>Agregar</strong>
         </button>
-        <table className="table">
+        </div>
+        <div className="table-responsive">
+        <table className="table text-center">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">Imagen</th>
               <th scope="col">Nombre</th>
               <th scope="col">Fecha Inicio</th>
               <th scope="col">Fecha Fin</th>
@@ -83,7 +87,15 @@ export const ListaEventos = () => {
             {listaEventosAdmin.map((e) => {
               return (
                 <tr key={e._id}>
-                  <th scope="row">{e._id}</th>
+                  <th ><img
+                        src={e.img}
+                        alt={e.nombre}
+                        style={{
+                          borderRadius: "10%",
+                          width: "100px",
+                          height: "auto",
+                        }}
+                      /></th>
 
                   <td>{e.nombre}</td>
                   <td>{e.fechaInicio.substring(0,10)}</td>
@@ -95,19 +107,16 @@ export const ListaEventos = () => {
                       className="btn btn-warning"
                       onClick={() => handleOpenModal(e)}
                     >
-                      {" "}
-                      Editar
+                      <i className="fa fa-user mx-2"></i><strong>Editar</strong>
                     </button>
                     <button
                       id="btn-eliminar"
-                      className="btn btn-danger"
+                      className="btn btn-danger mx-2"
                       onClick={() => {
                         eliminar(e._id);
-                        s;
                       }}
                     >
-                      {" "}
-                      Eliminar
+                      <i className="fa fa-trash mx-2"></i><strong>Eliminar</strong>
                     </button>
                   </td>
                 </tr>
@@ -115,6 +124,7 @@ export const ListaEventos = () => {
             })}
           </tbody>
         </table>
+        </div>
         <UpdateEvento
           eventoEdit={eventos}
           isOpen={showModal}

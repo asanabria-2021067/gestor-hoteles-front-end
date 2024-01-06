@@ -1,6 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-const URL_BUSCAR = 'http://localhost:8080/api/buscar/hotelUsuario/';
+const URL_BUSCAR = 'https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/buscar/hotelUsuario/';
 
 export const apiUsuarioHotel = async(usuarios, id) => {
     console.log(usuarios)

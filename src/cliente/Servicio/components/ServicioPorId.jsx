@@ -28,42 +28,47 @@ export const ServicioId = () => {
 
   return (
     <>
-    <NavBar/>
+      <NavBar />
       <div className="container">
         <div className="row">
-        <div className="card col-6 mb-3 mt-5">
-          <div className="row g-0">
-            <div className="col-md-12">
-              <img
-                src={servicio.img}
-                className="img-fluid rounded-start"
-                alt="..."
-              />
-            </div>
-            <div className="col-md-7">
-              <div className="card-body">
-                <h5 className="card-title">
-                  Nombre Servicio: {servicio.nombre}
-                </h5>
-                <p>{servicio.descripcion}</p>
-                <span type="button" className="btn btn-success">
-                  Precio: Q.{servicio.precio}
-                </span>
+          <div className="card col-12 col-md-6 mb-3 mt-1">
+            <div className="row g-0">
+              <div className="col-md-12">
+                <img
+                  src={servicio.img}
+                  className="img-fluid"
+                  alt="..."
+                  style={{ paddingTop: "10px" }}
+                />
+              </div>
+              <div className="col-md-12">
+                <div className="card-body">
+                  <div className="align-items-center justify-content-center">
+                    <h5 className="card-title text-center mt-2" style={{ color: 'black', fontSize: "30px", fontWeight: "bold", textAlign: "center" }} >
+                      Nombre: {servicio.nombre}
+                    </h5>
+                    <p className="text-center mt-2 mb-2">{servicio.descripcion}</p>
+                  </div>
+                  <div className="d-flex align-items-center justify-content-center">
+                    <btn className="btn btn-success" style={{width:"100%"}}>
+                      Precio: Q.{servicio.precio}
+                    </btn>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="search-container col-6">
-          <form className="formReserva2" onSubmit={handleSearch}>
-            <div className="submit-box">
-              <button 
-                type="submit"
-              >
-                Reservar
-              </button>
-            </div>
-          </form>
-        </div>
+          <div className="search-container col-6 mt-5">
+            <form className="formReserva2" onSubmit={handleSearch}>
+              <div className="submit-box2" style={{marginTop:"30%"}}>
+                <button
+                  type="submit"
+                >
+                  Reservar
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>

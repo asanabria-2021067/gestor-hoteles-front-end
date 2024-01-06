@@ -2,7 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const token = localStorage.getItem("token");
-const URL = "http://localhost:8080/api/usuarios/";
+const URL = "https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/usuarios/";
 
 export const apiUsuarios = async () => {
   try {

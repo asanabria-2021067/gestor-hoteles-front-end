@@ -31,34 +31,37 @@ export const EventoId = () => {
     <NavBar/>
       <div className="container">
         <div className="row">
-        <div className="card col-6 mb-3 mt-5">
+        <div className="card col-6 mb-3 mt-2">
           <div className="row g-0">
             <div className="col-md-12">
               <img
                 src={evento.img}
                 className="img-fluid rounded-start"
                 alt="..."
+                style={{paddingLeft: "30px", paddingTop:"20px", height: "80vh"}}
               />
             </div>
-            <div className="col-md-7">
-              <div className="card-body">
-                <p className="card-title">Nombre Evento: {evento.nombre}</p>
-                <p>
-                  Fecha Inicio:{" "}
+            <div className="col-md-12">
+              <div className="card-body w-100">
+                <p className="card-title" style={{ color: 'black', fontSize: "28px", textAlign: "center"}}><strong>Nombre Evento: </strong>{evento.nombre}</p>
+                <p className="text-center" style={{ color: 'black', textAlign: "center"}}>
+                  <strong>Fecha Inicio: </strong>{" "}
                   {evento.fechaInicio
                     ? evento.fechaInicio.substring(0, 10)
                     : ""}
                 </p>
-                <p>
-                  Fecha Final:{" "}
+                <p className="text-center mb-2" style={{ color: 'black', textAlign: "center"}}>
+                  <strong>Fecha Final: </strong>{" "}
                   {evento.fechaFinal ? evento.fechaFinal.substring(0, 10) : ""}
                 </p>
-                <p>Precio: Q{evento.precio} c/u</p>
+                <div className="d-flex align-items-center justify-content-center">
+                <button className="btn btn-success" style={{width:"100%"}}>Precio: Q{evento.precio} c/u</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="search-container col-6">
+        <div className="search-container col-6" style={{marginTop:"20%"}}>
           <form className="formReserva2" onSubmit={handleSearch}>
             <div className="submit-box">
               <button

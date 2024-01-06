@@ -33,7 +33,7 @@ export const Reservacion = () => {
   useEffect(() => {
     let totalInicial = 0;
     habitaciones.forEach((h) => {
-      totalInicial += h.costo;
+      totalInicial += h.costo * reservacion.dias_habitaciones;
     });
     servicios.forEach((s) => {
       totalInicial += s.precio;
@@ -41,7 +41,7 @@ export const Reservacion = () => {
     eventos.forEach((e) => {
       totalInicial += e.precio;
     });
-  
+
     setTotalReserva(totalInicial);
   }, [habitaciones, servicios, eventos]);
 
@@ -66,7 +66,7 @@ export const Reservacion = () => {
     limpiarReservacion();
     navigate(`/hoteles`);
   }
-    
+
 
   const limpiarReservacion = () => {
     setReservacion([]);
@@ -126,7 +126,7 @@ export const Reservacion = () => {
       startY: eventosStartY,
       margin: { top: 10 },
     });
-    doc.text(`Total: Q.${reservacion.total}`, 160, eventosStartY+50);
+    doc.text(`Total: Q.${totalReserva}`, 160, eventosStartY + 50);
     // Descargar el PDF
     doc.save("reserva.pdf");
   };
@@ -139,7 +139,7 @@ export const Reservacion = () => {
         const costoHabitacionEliminada = habitacionEliminada.costo;
         setTotalReserva((prevTotal) => prevTotal - costoHabitacionEliminada);
       }
-  
+
       setHabitaciones((prevHabitaciones) =>
         prevHabitaciones.filter((h) => h._id !== id)
       );
@@ -160,7 +160,7 @@ export const Reservacion = () => {
       });
     }
   };
-  
+
 
   const handleEliminarServicios = async (id) => {
     let result = await deleteServicios(id);
@@ -170,7 +170,7 @@ export const Reservacion = () => {
         const costoServicioEliminado = servicioEliminado.costo;
         setTotalReserva((prevTotal) => prevTotal - costoServicioEliminado);
       }
-  
+
       setServicios((prevServicios) =>
         prevServicios.filter((s) => s._id !== id)
       );
@@ -200,7 +200,7 @@ export const Reservacion = () => {
         const costoEventoEliminado = eventoEliminado.costo;
         setTotalReserva((prevTotal) => prevTotal - costoEventoEliminado);
       }
-  
+
       setEventos((prevEventos) => prevEventos.filter((e) => e._id !== id));
       setReservacion((prevReservacion) => ({
         ...prevReservacion,
@@ -221,159 +221,159 @@ export const Reservacion = () => {
   }
   return (
     <>
-    <NavBar/>
-    <section className="h-100 gradient-custom">
-      <div className="container py-5">
-        <div className="row justify-content-center align-items-center h-100">
-          <div className="col-md-8">
-            <div className="card card-body shadow">
-              <h2 className="tituloReserva text-center mb-4">Reservación</h2>
-              <div className="row mb-3">
-                <div className="col-md-6">
-                  <strong>Fecha de inicio:</strong>{" "}
-                  {reservacion.fechaInicio && new Date(reservacion.fechaInicio).toLocaleDateString()}
+      <NavBar />
+      <section className="h-100 gradient-custom">
+        <div className="container py-5">
+          <div className="row justify-content-center align-items-center h-100">
+            <div className="col-md-8">
+              <div className="card card-body shadow">
+                <h2 className="tituloReserva text-center mb-4">Reservación</h2>
+                <div className="row mb-3">
+                  <div className="col-md-6">
+                    <strong>Fecha de inicio:</strong>{" "}
+                    {reservacion.fechaInicio && new Date(reservacion.fechaInicio).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' })}
+                  </div>
+                  <div className="col-md-6">
+                    <strong>Fecha de fin:</strong>{" "}
+                    {reservacion.fechaFinal && new Date(reservacion.fechaFinal).toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' })}
+                  </div>
                 </div>
-                <div className="col-md-6">
-                  <strong>Fecha de fin:</strong>{" "}
-                  {reservacion.fechaFinal && new Date(reservacion.fechaFinal).toLocaleDateString()}
+                <div className="row mb-3">
+                  <div className="col-md-6">
+                    <strong>Cantidad de personas:</strong> {reservacion.cantidadPersonas}
+                  </div>
                 </div>
-              </div>
-              <div className="row mb-3">
-                <div className="col-md-6">
-                  <strong>Cantidad de personas:</strong> {reservacion.cantidadPersonas}
-                </div>
-              </div>
-              <hr />
-              <h4 className="reservacionTitulo">Habitaciones</h4>
-              {habitaciones.length > 0 ? (
-                <ul>
-                  {habitaciones.map((h) => (
-                    <div key={h._id} className="card mb-3 mt-4">
-                    <div className="row g-0">
-                      <div className="col-md-4">
-                          <img
-                            src={h.img}
-                            className="img-fluid rounded-start"
-                            alt="..."
-                          />
-                      </div>
-                      <div className="col-md-8">
-                        <div className="card-body">
-                          <h5 className="card-title">
-                            Tipo: {h.tipo}
-                          </h5>
-                          <p>Numero: {h.numero}</p>
-                          <p>Precio: {h.costo}</p>
+                <hr />
+                <h4 className="reservacionTitulo">Habitaciones</h4>
+                {habitaciones.length > 0 ? (
+                  <ul>
+                    {habitaciones.map((h) => (
+                      <div key={h._id} className="card mb-3 mt-4">
+                        <div className="row g-0">
+                          <div className="col-md-4">
+                            <img
+                              src={h.img}
+                              className="img-fluid rounded-start"
+                              alt="..."
+                            />
+                          </div>
+                          <div className="col-md-8">
+                            <div className="card-body">
+                              <h5 className="card-title">
+                                Tipo: {h.tipo}
+                              </h5>
+                              <p>Numero: {h.numero}</p>
+                              <p>Precio: {h.costo}</p>
+                            </div>
+                          </div>
+                          <button
+                            className="btn btn-danger mt-2"
+                            onClick={() => handleEliminarHabitacion(h._id)}
+                          >
+
+                            Eliminar
+                          </button>
                         </div>
                       </div>
-                      <button
-                className="btn btn-danger mt-2"
-                onClick={() => handleEliminarHabitacion(h._id)}
-              >
-                
-                Eliminar
-              </button>
-                    </div>
-                  </div>
-                  ))}
-                </ul>
-              ) : (
-                <p>No se han agregado habitaciones a la reserva.</p>
-              )}
-              <hr />
-              <h4 className="reservacionTitulo">Servicios</h4>
-              {servicios.length > 0 ? (
-                <ul>
-                  {servicios.map((s) => (
-                    <div key={s._id} className="card mb-3 mt-4">
-                    <div className="row g-0">
-                      <div className="col-md-4">
-                          <img
-                            src={s.img}
-                            className="img-fluid rounded-start"
-                            alt="..."
-                          />
-                      </div>
-                      <div className="col-md-8">
-                        <div className="card-body">
-                          <h5 className="card-title">
-                            Nombre: {s.nombre}
-                          </h5>
-                          <p>Descripcion: {s.descripcion}</p>
-                          <p> Precio: {s.precio} </p>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>No se han agregado habitaciones a la reserva.</p>
+                )}
+                <hr />
+                <h4 className="reservacionTitulo">Servicios</h4>
+                {servicios.length > 0 ? (
+                  <ul>
+                    {servicios.map((s) => (
+                      <div key={s._id} className="card mb-3 mt-4">
+                        <div className="row g-0">
+                          <div className="col-md-4">
+                            <img
+                              src={s.img}
+                              className="img-fluid rounded-start"
+                              alt="..."
+                            />
+                          </div>
+                          <div className="col-md-8">
+                            <div className="card-body">
+                              <h5 className="card-title">
+                                Nombre: {s.nombre}
+                              </h5>
+                              <p>Descripcion: {s.descripcion}</p>
+                              <p> Precio: {s.precio} </p>
+                            </div>
+                          </div>
+                          <button
+                            className="btn btn-danger mt-2"
+                            onClick={() => handleEliminarServicios(s._id)}
+                          >
+
+                            Eliminar
+                          </button>
                         </div>
                       </div>
-                      <button
-                className="btn btn-danger mt-2"
-                onClick={() => handleEliminarServicios(s._id)}
-              >
-                
-                Eliminar
-              </button>
-                    </div>
-                  </div>
-                  ))}
-                </ul>
-              ) : (
-                <p>No se han agregado servicios a la reserva.</p>
-              )}
-              <hr />
-              <h4 className="reservacionTitulo">Eventos</h4>
-              {eventos.length > 0 ? (
-                <ul>
-                  {eventos.map((e) => (
-                    <div key={e._id} className="card mb-3 mt-4">
-                    <div className="row g-0">
-                      <div className="col-md-4">
-                          <img
-                            src={e.img}
-                            className="img-fluid rounded-start"
-                            alt="..."
-                          />
-                      </div>
-                      <div className="col-md-8">
-                        <div className="card-body">
-                          <h5 className="card-title">
-                            Nombre: {e.nombre}
-                          </h5>
-                          <p>Descripcion: {e.descripcion}</p>
-                          <p>Precio: {e.precio}</p>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>No se han agregado servicios a la reserva.</p>
+                )}
+                <hr />
+                <h4 className="reservacionTitulo">Eventos</h4>
+                {eventos.length > 0 ? (
+                  <ul>
+                    {eventos.map((e) => (
+                      <div key={e._id} className="card mb-3 mt-4">
+                        <div className="row g-0">
+                          <div className="col-md-4">
+                            <img
+                              src={e.img}
+                              className="img-fluid rounded-start"
+                              alt="..."
+                            />
+                          </div>
+                          <div className="col-md-8">
+                            <div className="card-body">
+                              <h5 className="card-title">
+                                Nombre: {e.nombre}
+                              </h5>
+                              <p>Descripcion: {e.descripcion}</p>
+                              <p>Precio: {e.precio}</p>
+                            </div>
+                          </div>
+                          <button
+                            className="btn btn-danger mt-2"
+                            onClick={() => handleEliminarEventos(e._id)}
+                          >
+
+                            Eliminar
+                          </button>
                         </div>
                       </div>
-                      <button
-                className="btn btn-danger mt-2"
-                onClick={() => handleEliminarEventos(e._id)}
-              >
-                
-                Eliminar
-              </button>
-                    </div>
-                  </div>
-                  ))}
-                </ul>
-              ) : (
-                <p>No se han agregado eventos a la reserva.</p>
-              )}
-              <div className="col-md-6">
+                    ))}
+                  </ul>
+                ) : (
+                  <p>No se han agregado eventos a la reserva.</p>
+                )}
+                <div className="col-md-6">
                   <strong>Total:</strong> Q.{totalReserva}
                 </div>
-              <div className="text-center">
-                <button className="btn btn-primary" onClick={handleFactura}>
-                  Factura
-                </button>
-                <button
-                  className="btn btn-danger ms-2"
-                  onClick={() => navigate("/hoteles")}
-                >
-                  Seguir Reservando
-                </button>
+                <div className="text-center">
+                  <button className="btn btn-primary" onClick={handleFactura}>
+                    Factura
+                  </button>
+                  <button
+                    className="btn btn-danger ms-2"
+                    onClick={() => navigate("/hoteles")}
+                  >
+                    Seguir Reservando
+                  </button>
+                </div>
+
               </div>
-              
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };

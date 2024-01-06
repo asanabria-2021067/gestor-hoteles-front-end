@@ -9,10 +9,11 @@ export const NavBar = () => {
       <header>
         <div>
           <nav
-            className="navbar navbar-expand-lg bg-body-tertiary"
-            data-bs-theme="dark"
+            className="navbar navbar-expand-lg bg-body-tertiary navbarNextUi pb-2 pt-2"
+            id="navbarColor"
+
           >
-            <div className="container-fluid">
+            <div className="container">
               <button
                 className="navbar-toggler"
                 type="button"
@@ -37,10 +38,11 @@ export const NavBar = () => {
                   />
                 </a>
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li className="nav-item">
+                  <li className="nav-item  me-auto ms-auto ">
                   <a
                       className="nav-link active"
                       href="/principalSuperAdmin"
+                      style={{color: "white"}}
                       onClick={(event) => {
                         event.preventDefault();
                         navigate("/principalSuperAdmin");
@@ -49,24 +51,27 @@ export const NavBar = () => {
                       Inicio
                     </a>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item  me-auto ms-auto ">
                     <a className="nav-link active"  
                     href="/miPerfilSuperAdmin"
+                    style={{color: "white"}}
                       onClick={(event) => {
                         event.preventDefault();
                         navigate("/miPerfilSuperAdmin");
                       }}>Mi Perfil</a>
                   </li>
-                  <li className="inicioSesion2">
+                  <li className="cerrarSesion me-auto ms-auto ">
                     <a
                       className="nav-link active"
                       href="/"
+                      style={{color: "white"}}
                       onClick={(event) => {
                         event.preventDefault();
+                        localStorage.clear();
                         navigate("/");
                       }}
                     >
-                      Cerrar Sesion
+                      <i className="fa fa-download mx-2"></i>Cerrar Sesion
                     </a>
                   </li>
                 </ul>

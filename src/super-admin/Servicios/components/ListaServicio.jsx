@@ -10,6 +10,7 @@ import { servicio } from "../models/servicio";
 
 export const ListaServicio = () => {
   const [listaServicios, setListaServicios] = useState([]);
+  console.log(listaServicios);
   const [showModal, setShowModal] = useState(false);
   const [servicios, setServicios] = useState(servicio);
   const navigate = useNavigate();
@@ -54,51 +55,65 @@ export const ListaServicio = () => {
       <NavBar></NavBar>
       <div className="container">
         <CanvaOpciones></CanvaOpciones>
-        <h2>Lista de servicios</h2>
+        <h2 style={{color: 'black', fontSize: "45px", fontWeight: "bold", textAlign: "center"}}>Lista de servicios</h2>
+        <div className="d-flex align-items-center justify-content-center mt-3 mb-5">
         <button
           id="btn-agregar"
           className="btn btn-primary"
+          style={{width: "80%", height: "40%", fontSize: "20px", textTransform: "uppercase"}}
           onClick={(event) => {
             event.preventDefault();
             navigate("/agregarServicioAdmin");
           }}
         >
-          Agregar
+          <i className="fa fa-save mx-2"></i><strong>Agregar</strong>
         </button>
-        <table className="table">
+        </div>
+        <div className="table-responsive mb-5">
+        <table className="table text-center">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">Imagen</th>
               <th scope="col">Nombre</th>
               <th scope="col">Precio</th>
               <th scope="col">Descripcion</th>
+              <th scope="col">Hotel</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
             {listaServicios.map((s) => {
               return (
                 <tr key={s._id}>
-                  <th scope="row">{s._id}</th>
+                  <th><img
+                        src={s.img}
+                        alt={s.nombre}
+                        style={{
+                          borderRadius: "10%",
+                          width: "100px",
+                          height: "auto",
+                        }}
+                      /></th>
 
                   <td>{s.nombre}</td>
-                  <td>{s.precio}</td>
+                  <td>Q.{s.precio}</td>
                   <td>{s.descripcion}</td>
+                  <td><strong>{s.hotel?.nombre}</strong></td>
                   <td>
                     <button
                       className="btn btn-warning"
                       onClick={() => handleOpenModal(s)}
                     >
-                      Editar
+                       <i className="fa fa-user mx-2"></i><strong>Editar</strong>
                     </button>
                     <button
                       id="btn-eliminar"
-                      className="btn btn-danger"
+                      className="btn btn-danger mx-2"
                       onClick={() => {
                         eliminar(s._id);
                       }}
                     >
-                      {" "}
-                      Eliminar
+                     <i className="fa fa-trash mx-2"></i><strong>Eliminar</strong>
                     </button>
                   </td>
                 </tr>
@@ -106,6 +121,7 @@ export const ListaServicio = () => {
             })}
           </tbody>
         </table>
+        </div>
         <UpdateServicio
           servicioEdit={servicios}
           isOpen={showModal}

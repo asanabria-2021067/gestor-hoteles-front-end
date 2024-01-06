@@ -2,11 +2,11 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const token = localStorage.getItem('token');
-const URL = 'http://localhost:8080/api/hoteles/';
-const URL_ADMIN = 'http://localhost:8080/api/hoteles/porAdmin/';
+const URL = 'https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/hoteles/';
+const URL_ADMIN = 'https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/hoteles/porAdmin/';
 
-const URL_BUSCAR = 'http://localhost:8080/api/buscar/hoteles/';
-
+const URL_BUSCAR = 'https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/buscar/hoteles/';
+const URL_BUSCAR_PAIS = 'https://proyecto-gestor-hoteles-back-end-gilt.vercel.app/api/hoteles/buscar/hoteles/pais/';
 
 
 export const apiHoteles = async(hotel) => {
@@ -21,6 +21,20 @@ export const apiHoteles = async(hotel) => {
     }
     }
 }
+
+export const apiHotelFromCountry = async(country) => {
+    console.log(country);
+    if(country != ""){
+    try {
+        const hoteles = await axios.get(`${URL_BUSCAR_PAIS}${country}`);
+        console.log(hoteles.data.listaHoteles[1]);
+        return hoteles.data.listaHoteles[1];
+    } catch (error) {
+        console.log(error)
+    }
+    }
+}
+
 export const apiHotelesGrupal = async() => {
     try {
         const listaHoteles = await axios.get(`${URL}buscar`);
@@ -42,7 +56,7 @@ export const apiHotelesPorAdmin = async() => {
 export const apiHotelesId = async(id) => {
     try {
         const hoteles = await axios.get(`${URL}buscar/${id}`);
-        console.log("AAA", hoteles.data.listaHoteles)
+        console.log("AAA", hoteles.data)
         return hoteles.data.listaHoteles;
     } catch (error) {
         console.log(error)
